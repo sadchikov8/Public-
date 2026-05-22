@@ -8,7 +8,7 @@
 <style>
   :root {
     --navy:#0d1f35; --blue:#1a3a5c; --accent:#2e7de1;
-    --gold:#e8b84b; --red:#c0392b; --light:#f0f4f8; --white:#ffffff;
+    --gold:#e8b84b; --red:#c0392b; --white:#ffffff;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--navy);color:var(--white);font-family:'Nunito',sans-serif;min-height:100vh;}
@@ -63,12 +63,13 @@
   .price-amount{font-family:'Bebas Neue';font-size:28px;color:var(--gold);}
   .price-amount.uah{font-size:20px;color:rgba(255,255,255,.7);}
   .divider{height:1px;background:rgba(255,255,255,.08);margin:14px 0;}
-  .payment-note{font-size:12px;color:rgba(255,255,255,.45);}
+  .payment-note{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;}
 
   .qr-block{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 20px;margin:0 20px 20px;}
   .qr-img{width:80px;height:80px;border-radius:8px;background:#fff;padding:4px;flex-shrink:0;}
   .qr-text{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;}
   .qr-text strong{color:var(--white);display:block;margin-bottom:4px;font-size:14px;}
+  .qr-link{font-size:10px;color:rgba(255,255,255,.3);word-break:break-all;margin-top:4px;}
 
   .btn-pdf{display:block;margin:0 20px 32px;background:var(--accent);color:#fff;text-align:center;padding:16px;border-radius:10px;font-weight:700;font-size:15px;letter-spacing:1px;cursor:pointer;border:none;width:calc(100% - 40px);transition:background .2s,transform .1s;text-transform:uppercase;}
   .btn-pdf:hover{background:#1a6bc9;transform:translateY(-1px);}
@@ -87,7 +88,6 @@
     .nav-btn,.thumbs,.btn-pdf{display:none!important;}
     .gallery-main{height:300px!important;}
     .hero{background:#1a3a5c!important;}
-    .chip{border-color:#1a3a5c!important;color:#000!important;}
   }
 </style>
 </head>
@@ -164,10 +164,11 @@
 </div>
 
 <div class="qr-block">
-  <img class="qr-img" src="data:image/png;base64,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" alt="QR">
+  <img class="qr-img" src="data:image/png;base64,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" alt="QR">
   <div class="qr-text">
-    <strong>Відео та фото на Google Drive</strong>
-    Відскануйте QR-код для перегляду повної галереї та відео огляду
+    <strong>Відкрити на телефоні</strong>
+    Відскануйте QR-код або перейдіть за посиланням
+    <div class="qr-link">https://sadchikov8.github.io/Public/BYD_SeaLion07_LGXC74C46S0502807.html</div>
   </div>
 </div>
 
@@ -188,7 +189,6 @@ const photos = [
 { id:"1atYlgyjcxLxKNRz561NGncQw8nciCqNM", urls:["https://lh3.googleusercontent.com/d/1atYlgyjcxLxKNRz561NGncQw8nciCqNM","https://drive.google.com/thumbnail?id=1atYlgyjcxLxKNRz561NGncQw8nciCqNM&sz=w1280","https://drive.google.com/uc?export=view&id=1atYlgyjcxLxKNRz561NGncQw8nciCqNM"] }
 ];
 let current = 0;
-
 const mainPhoto = document.getElementById('mainPhoto');
 const thumbsEl  = document.getElementById('thumbs');
 const photoIdx  = document.getElementById('photoIdx');
@@ -198,57 +198,34 @@ document.getElementById('photoTotal').textContent = photos.length;
 photos.forEach((p, i) => {
   const img = document.createElement('img');
   img.className = 'thumb' + (i===0?' active':'');
-  img.src = p.urls[1]; // thumbnail для мініатюр
+  img.src = p.urls[1];
   img.alt = 'Фото '+(i+1);
   img.onclick = () => setPhoto(i);
   thumbsEl.appendChild(img);
 });
 
-function loadWithFallback(el, urls, idx) {
-  if(idx >= urls.length) {
-    el.style.opacity = '0.2';
-    photoErr.style.display = 'block';
-    return;
-  }
-  el.onerror = () => loadWithFallback(el, urls, idx+1);
-  el.src = urls[idx];
+function tryLoad(urls, idx, onSuccess, onFail) {
+  if(idx >= urls.length) { onFail(); return; }
+  const t = new Image();
+  t.onload = () => onSuccess(urls[idx]);
+  t.onerror = () => tryLoad(urls, idx+1, onSuccess, onFail);
+  t.src = urls[idx];
 }
 
 function setPhoto(idx) {
   current = (idx + photos.length) % photos.length;
   mainPhoto.classList.add('loading');
   photoErr.style.display = 'none';
-  const p = photos[current];
-  const tmp = new Image();
-  tmp.onload = () => {
-    mainPhoto.src = tmp.src;
-    mainPhoto.style.opacity = '1';
-    mainPhoto.classList.remove('loading');
-  };
-  tmp.onerror = () => {
-    // try next URL
-    let tried = 0;
-    function tryNext() {
-      if(tried >= p.urls.length) {
-        mainPhoto.classList.remove('loading');
-        photoErr.style.display = 'block';
-        return;
-      }
-      const t2 = new Image();
-      t2.onload = () => { mainPhoto.src = t2.src; mainPhoto.classList.remove('loading'); };
-      t2.onerror = () => { tried++; tryNext(); };
-      t2.src = p.urls[tried++];
-    }
-    tryNext();
-  };
-  tmp.src = p.urls[0];
+  tryLoad(photos[current].urls, 0,
+    (url) => { mainPhoto.src = url; mainPhoto.classList.remove('loading'); },
+    ()    => { mainPhoto.classList.remove('loading'); photoErr.style.display = 'block'; }
+  );
   photoIdx.textContent = current+1;
   document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active',i===current));
   document.querySelectorAll('.thumb')[current].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 
 function changePhoto(dir) { setPhoto(current+dir); }
-
 setPhoto(0);
 
 document.addEventListener('keydown', e => {
