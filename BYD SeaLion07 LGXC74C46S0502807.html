@@ -24,9 +24,8 @@
   .price-usd{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,52px);color:var(--gold);}
   .price-uah{font-size:18px;color:rgba(255,255,255,.5);font-weight:300;}
 
-  /* Gallery */
   .gallery-wrap{position:relative;margin-top:28px;}
-  .gallery-main{width:100%;height:clamp(220px,50vw,420px);object-fit:cover;display:block;border-radius:8px 8px 0 0;cursor:pointer;transition:opacity .3s;background:#1a3a5c;pointer-events:none;}
+  .gallery-main{width:100%;height:clamp(220px,50vw,420px);object-fit:cover;display:block;border-radius:8px 8px 0 0;transition:opacity .3s;background:#1a3a5c;pointer-events:none;}
   .gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:60px;z-index:10;cursor:default;}
   .gallery-main.loading{opacity:.3;}
   .nav-btn{position:absolute;top:calc(50% - 30px);transform:translateY(-50%);background:rgba(13,31,53,.75);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(4px);z-index:20;}
@@ -34,7 +33,7 @@
   .nav-prev{left:10px;} .nav-next{right:10px;}
   .thumbs{display:flex;gap:6px;padding:8px 0 0;overflow-x:auto;scrollbar-width:none;}
   .thumbs::-webkit-scrollbar{display:none;}
-  .thumb{flex:0 0 auto;width:72px;height:52px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.55;background:#1a3a5c;pointer-events:auto;}
+  .thumb{flex:0 0 auto;width:72px;height:52px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.55;background:#1a3a5c;}
   .thumb.active{border-color:var(--gold);opacity:1;}
   .photo-counter{position:absolute;bottom:70px;right:12px;background:rgba(13,31,53,.8);padding:3px 10px;border-radius:20px;font-size:12px;color:rgba(255,255,255,.7);backdrop-filter:blur(4px);z-index:20;}
   .photo-err{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:12px;color:rgba(255,255,255,.4);z-index:5;}
@@ -54,11 +53,9 @@
   .spec-item.full{grid-column:1/-1;}
   .spec-val.highlight{color:var(--gold);}
 
-  .video-btn{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 20px;text-decoration:none;color:var(--white);transition:background .2s,border-color .2s;}
-  .video-btn:hover{background:rgba(46,125,225,.15);border-color:var(--accent);}
-  .play-icon{width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
-  .video-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;}
-  .video-title{font-weight:700;font-size:15px;margin-top:2px;}
+  /* YouTube */
+  .video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:12px;overflow:hidden;background:#000;}
+  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
 
   .price-block{background:linear-gradient(135deg,rgba(26,58,92,.8),rgba(13,31,53,.9));border:1px solid rgba(232,184,75,.25);border-radius:14px;padding:24px 20px;margin:0 20px 32px;}
   .price-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
@@ -80,7 +77,6 @@
 </head>
 <body>
 
-<!-- Блокування правої кнопки та drag -->
 <script>
   document.addEventListener('contextmenu', e => e.preventDefault());
   document.addEventListener('dragstart', e => e.preventDefault());
@@ -96,8 +92,7 @@
   </div>
   <div class="gallery-wrap">
     <img id="mainPhoto" class="gallery-main" alt="BYD Sea Lion 07">
-    <div class="gallery-overlay"
-      id="overlay"
+    <div class="gallery-overlay" id="overlay"
       ontouchstart="handleTouchStart(event)"
       ontouchend="handleTouchEnd(event)">
     </div>
@@ -145,13 +140,13 @@
 
 <div class="section" style="padding-top:0">
   <div class="section-title">Відео огляд</div>
-  <a href="https://drive.google.com/file/d/1WjaLVHe_E04cte-8Dx7k2cZkg0tz4hnV/view" target="_blank" class="video-btn">
-    <div class="play-icon">▶</div>
-    <div>
-      <div class="video-label">Дивитись на Google Drive</div>
-      <div class="video-title">BYD Sea Lion 07 DM-i · Відео огляд</div>
-    </div>
-  </a>
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/lOtCD8quWcg?rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 </div>
 
 <div class="price-block">
