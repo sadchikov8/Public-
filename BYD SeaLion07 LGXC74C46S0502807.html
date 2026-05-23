@@ -24,8 +24,8 @@
   .price-usd{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,52px);color:var(--gold);}
   .price-uah{font-size:18px;color:rgba(255,255,255,.5);font-weight:300;}
 
-  .gallery-wrap{position:relative;margin-top:28px;}
-  .gallery-main{width:100%;height:clamp(220px,50vw,420px);object-fit:cover;display:block;border-radius:8px 8px 0 0;transition:opacity .3s;background:#1a3a5c;pointer-events:none;}
+  .gallery-wrap{position:relative;margin-top:28px;margin-left:-24px;margin-right:-24px;}
+  .gallery-main{width:100%;height:clamp(240px,55vw,600px);object-fit:cover;display:block;transition:opacity .3s;background:#1a3a5c;pointer-events:none;}
   .gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:60px;z-index:10;cursor:default;}
   .gallery-main.loading{opacity:.3;}
   .nav-btn{position:absolute;top:calc(50% - 30px);transform:translateY(-50%);background:rgba(13,31,53,.75);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(4px);z-index:20;}
@@ -70,6 +70,8 @@
   @media(min-width:600px){
     .specs-grid{grid-template-columns:1fr 1fr 1fr;}
     .hero{padding:48px 40px 0;}
+    .gallery-wrap{margin-left:-40px;margin-right:-40px;}
+    .thumbs{padding-left:40px;padding-right:40px;}
     .section{padding:32px 40px;}
     .price-block{margin-left:40px;margin-right:40px;}
   }
