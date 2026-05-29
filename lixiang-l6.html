@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lixiang L6 Max 2025 — EM Electro Motors</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0d1220;--dark:#141824;--card:#1c2235;--blue:#2d5db8;--blue-light:#4a7fd4;--gray:#8a8fa8;--gray-light:#c0c4d4;--white:#ffffff;--border:rgba(45,93,184,0.25);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--navy);color:var(--white);font-family:'Nunito',sans-serif;min-height:100vh;-webkit-user-select:none;user-select:none;}
+  .header{background:var(--dark);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:center;}
+  .header-logo-wrap{width:clamp(120px,15vw,200px);}
+  .hero{position:relative;background:linear-gradient(160deg,#0d1220 0%,#141e38 50%,#0d1220 100%);padding:32px 24px 0;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(45,93,184,0.12) 0%,transparent 65%);pointer-events:none;}
+  .hero-center{text-align:center;padding-bottom:8px;}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;justify-content:center;}
+  .badge{display:inline-block;font-weight:700;font-size:10px;letter-spacing:1.5px;padding:5px 14px;border-radius:3px;text-transform:uppercase;}
+  .badge-blue{background:var(--blue);color:#fff;}
+  .badge-outline{background:transparent;color:var(--gray-light);border:1px solid rgba(255,255,255,0.2);}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,7vw,68px);line-height:.95;letter-spacing:1px;}
+  .hero h1 span{color:var(--blue-light);}
+  .hero-sub{font-size:13px;color:var(--gray);margin-top:8px;letter-spacing:1px;text-transform:uppercase;}
+  .price-usd{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,6vw,50px);color:var(--white);margin-top:16px;}
+  .price-usd span{color:var(--blue-light);}
+  .gallery-wrap{position:relative;margin-top:24px;margin-left:-24px;margin-right:-24px;}
+  .gallery-main{width:100%;height:clamp(240px,55vw,720px);object-fit:contain;display:block;transition:opacity .3s;background:var(--dark);pointer-events:none;}
+  .gallery-main.loading{opacity:.3;}
+  .gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:60px;z-index:10;}
+  .watermark{position:absolute;inset:0;z-index:15;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+  .watermark img{width:70%;height:auto;opacity:0.12;}
+  .nav-btn{position:absolute;top:calc(50% - 30px);transform:translateY(-50%);background:rgba(13,18,32,.8);border:1px solid var(--border);color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(4px);z-index:20;}
+  .nav-btn:hover{background:var(--blue);}
+  .nav-prev{left:10px;}.nav-next{right:10px;}
+  .thumbs{display:flex;gap:6px;padding:8px 24px 0;overflow-x:auto;scrollbar-width:none;background:var(--dark);}
+  .thumbs::-webkit-scrollbar{display:none;}
+  .thumb{flex:0 0 auto;width:72px;height:52px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.5;background:var(--card);}
+  .thumb.active{border-color:var(--blue);opacity:1;}
+  .photo-counter{position:absolute;bottom:70px;right:12px;background:rgba(13,18,32,.85);padding:3px 10px;border-radius:20px;font-size:12px;color:var(--gray-light);backdrop-filter:blur(4px);z-index:20;}
+  .photo-err{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:12px;color:var(--gray);z-index:5;}
+  .section{padding:24px 20px;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--blue-light);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .section-title::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+  .specs-table{width:100%;border-collapse:collapse;}
+  .specs-table tr{border-bottom:1px solid var(--border);}
+  .specs-table tr:last-child{border-bottom:none;}
+  .specs-table td{padding:10px 14px;font-size:14px;}
+  .specs-table td:first-child{color:var(--gray);font-size:11px;text-transform:uppercase;letter-spacing:1px;width:45%;background:var(--card);border-radius:4px 0 0 4px;}
+  .specs-table td:last-child{font-weight:700;color:var(--white);background:rgba(28,34,53,0.5);border-radius:0 4px 4px 0;}
+  .specs-table td.highlight{color:var(--blue-light);}
+  .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .feature-item{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray-light);}
+  .video-carousel{position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--border);}
+  .video-slides{display:flex;transition:transform .4s ease;width:100%;}
+  .video-slide{flex:0 0 100%;min-width:100%;}
+  .video-wrap{position:relative;width:100%;padding-bottom:56.25%;background:#000;}
+  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  .video-nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(13,18,32,.8);border:1px solid var(--border);color:#fff;font-size:20px;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);z-index:5;transition:background .2s;}
+  .video-nav-btn:hover{background:var(--blue);}
+  .video-prev{left:8px;}.video-next{right:8px;}
+  .video-dots{display:flex;justify-content:center;gap:8px;margin-top:12px;}
+  .video-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:background .2s;border:none;}
+  .video-dot.active{background:var(--blue);}
+  .price-block{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px 20px;margin:0 20px 32px;}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .price-tag{font-size:13px;color:var(--gray);}
+  .price-amount{font-family:'Bebas Neue';font-size:32px;color:var(--white);}
+  .divider{height:1px;background:var(--border);margin:14px 0;}
+  .payment-note{font-size:12px;color:var(--gray);line-height:1.8;}
+  .page-footer{background:var(--dark);border-top:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-logo{width:clamp(80px,10vw,140px);opacity:.6;}
+  .vin-text{font-size:11px;color:rgba(255,255,255,.2);letter-spacing:2px;}
+  @media(min-width:600px){
+    .features-grid{grid-template-columns:1fr 1fr 1fr;}
+    .hero{padding:40px 40px 0;}
+    .gallery-wrap{margin-left:-40px;margin-right:-40px;}
+    .thumbs{padding-left:40px;padding-right:40px;}
+    .section{padding:28px 40px;}
+    .price-block{margin-left:40px;margin-right:40px;}
+    .header{padding:14px 40px;}
+  }
+</style>
+</head>
+<body>
+<script>document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('dragstart',e=>e.preventDefault());</script>
+
+<div class="header"><div class="header-logo-wrap"><?xml version="1.0" standalone="no"?> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none"> <path d="M7875 7040 c-616 -952 -1122 -1730 -1125 -1730 -3 0 -86 555 -184 1233 -98 677 -181 1248 -185 1267 -5 22 -10 -28 -14 -140 -30 -790 -375 -1855 -1014 -3135 -267 -532 -580 -1092 -897 -1600 -181 -291 -179 -298 22 -98 210 210 397 454 610 794 399 639 850 1613 1197 2587 26 73 49 131 50 130 2 -2 85 -446 184 -987 100 -542 183 -986 184 -988 2 -2 1302 2476 2225 4239 45 87 79 158 74 158 -5 0 -512 -778 -1127 -1730z"/> <path d="M930 7715 l0 -215 880 0 880 0 0 199 c0 110 -3 206 -6 215 -6 14 -92 16 -880 16 l-874 0 0 -215z"/> <path d="M2845 7918 c-3 -7 -4 -821 -3 -1808 l3 -1795 165 0 165 0 3 1808 2 1807 -165 0 c-123 0 -167 -3 -170 -12z"/> <path d="M3340 6120 l0 -1810 169 0 c145 0 170 2 175 16 3 9 6 559 6 1222 -1 1068 -5 1398 -24 1785 -3 56 -3 93 0 82 3 -11 19 -76 36 -145 26 -109 350 -997 1053 -2887 l27 -73 83 0 c70 0 84 3 90 18 62 156 1024 2750 1042 2807 57 193 72 304 73 545 0 124 1 231 0 238 0 8 -21 12 -69 12 -56 0 -70 -3 -76 -17 -23 -58 -961 -2621 -980 -2678 -13 -38 -35 -107 -48 -153 -13 -46 -27 -84 -32 -85 -4 -1 -36 86 -71 193 -35 107 -278 768 -541 1468 l-477 1272 -218 0 -218 0 0 -1810z"/> <path d="M8945 7728 c-133 -143 -287 -360 -449 -631 -289 -485 -691 -1310 -1011 -2077 -42 -102 -81 -189 -85 -193 -4 -5 -31 76 -60 180 -28 103 -55 193 -59 200 -3 6 -34 -42 -70 -110 l-64 -122 89 -400 88 -399 18 89 c37 185 153 491 353 935 239 531 904 1821 1307 2537 16 28 25 54 19 57 -5 3 -39 -27 -76 -66z"/> <path d="M6827 7048 l-158 -352 21 -136 c12 -74 25 -143 29 -154 5 -14 26 10 101 117 52 75 98 136 101 136 4 1 35 -112 69 -250 l63 -250 59 88 c32 48 66 101 74 116 14 26 8 59 -86 515 -56 268 -104 495 -108 504 -5 12 -56 -91 -165 -334z"/> <path d="M1340 6165 l0 -195 673 2 672 3 3 170 c1 94 0 180 -3 193 l-5 22 -670 0 -670 0 0 -195z"/> <path d="M5696 4380 c-357 -712 -652 -1308 -657 -1325 l-8 -30 25 30 c125 148 553 800 1132 1726 147 235 242 396 242 411 0 19 -62 367 -83 468 -2 8 -295 -568 -651 -1280z"/> <path d="M932 4533 l3 -218 875 0 875 0 3 195 c1 107 0 205 -3 218 l-5 22 -875 0 -875 0 2 -217z"/> <path d="M1437 3920 c-5 -19 -14 -20 -271 -20 -146 0 -266 -3 -266 -6 0 -3 7 -12 15 -20 22 -23 22 -665 0 -688 -8 -8 -15 -17 -15 -20 0 -3 122 -6 270 -6 l271 0 9 -22 c6 -16 9 9 9 82 0 73 -3 98 -9 83 -9 -23 -11 -23 -205 -23 l-195 0 0 100 0 100 124 0 c117 0 124 -1 139 -22 15 -22 16 -16 16 82 1 97 0 103 -15 82 -14 -21 -22 -22 -140 -22 l-124 0 0 90 0 90 190 0 c188 0 191 0 200 -22 6 -16 9 8 9 80 1 101 -2 120 -12 82z"/> <path d="M5640 3874 c0 -3 7 -12 15 -20 13 -13 15 -65 15 -344 0 -279 -2 -331 -15 -344 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 7 0 3 -7 14 -15 23 -13 14 -15 53 -13 246 l3 229 94 -225 c51 -124 99 -235 105 -248 11 -22 22 -2 122 225 l109 248 3 -229 c2 -193 0 -232 -13 -246 -8 -9 -15 -20 -15 -23 0 -4 41 -7 90 -7 89 0 104 6 75 30 -13 11 -15 61 -15 340 0 279 2 329 15 340 30 25 13 30 -95 30 -60 0 -110 -3 -110 -6 0 -3 7 -12 15 -20 17 -17 23 0 -80 -243 -72 -170 -79 -182 -90 -160 -7 13 -45 104 -86 202 -61 151 -71 182 -61 198 7 10 12 21 12 24 0 3 -49 5 -110 5 -60 0 -110 -3 -110 -6z"/> <path d="M2442 3790 c-12 -19 -23 -20 -232 -20 -121 0 -220 -4 -220 -9 0 -5 7 -14 15 -21 13 -10 15 -54 15 -275 0 -221 -2 -265 -15 -275 -8 -7 -15 -16 -15 -21 0 -5 103 -9 228 -9 228 0 229 0 240 -22 8 -18 11 -2 11 77 0 79 -3 95 -11 78 -11 -22 -15 -23 -170 -23 l-158 0 0 75 0 75 98 0 c93 0 100 -1 110 -22 8 -18 11 -2 11 77 1 93 0 98 -15 77 -14 -20 -23 -22 -110 -22 l-94 0 0 65 0 65 149 0 c144 0 151 -1 165 -22 15 -21 16 -16 16 75 0 53 -1 97 -3 97 -1 0 -8 -9 -15 -20z"/> <path d="M3061 3715 c0 -70 3 -93 9 -77 9 20 16 22 90 22 l80 0 0 -229 c0 -191 -3 -232 -15 -245 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 6 0 3 -7 12 -15 20 -12 13 -15 54 -15 245 l0 229 78 0 c72 0 80 -2 90 -22 8 -18 11 -2 11 77 0 70 -3 93 -9 78 -9 -23 -11 -23 -225 -23 -214 0 -216 0 -225 23 -6 15 -9 -8 -9 -78z"/> <path d="M2707 3776 c-68 -19 -116 -62 -157 -141 -33 -64 -35 -73 -35 -165 0 -92 2 -102 35 -166 43 -85 96 -128 177 -145 84 -17 162 -1 236 51 32 22 65 40 73 40 10 0 5 17 -18 65 -34 69 -45 78 -50 43 -5 -34 -78 -80 -136 -86 -67 -6 -114 11 -155 57 -92 102 -52 291 70 332 76 25 206 -18 220 -72 8 -30 18 -23 52 40 35 66 37 73 17 65 -7 -3 -39 13 -70 35 -83 58 -164 72 -259 47z"/> <path d="M4307 3776 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M7001 3695 c0 -70 3 -93 9 -77 9 20 16 22 90 22 l80 0 0 -229 c0 -191 -3 -232 -15 -245 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 6 0 3 -7 12 -15 20 -12 13 -15 54 -15 245 l0 229 78 0 c72 0 80 -2 90 -22 8 -18 11 -2 11 77 0 70 -3 93 -9 78 -9 -23 -11 -23 -225 -23 -214 0 -216 0 -225 23 -6 15 -9 -8 -9 -78z"/> <path d="M1520 3761 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 94 -6 210 -6 188 0 210 -2 219 -17 8 -13 10 6 10 72 0 66 -2 85 -10 73 -9 -16 -27 -18 -149 -18 l-140 0 0 235 c0 200 2 236 15 241 37 14 8 24 -70 24 -47 0 -85 -4 -85 -9z"/> <path d="M3560 3761 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 78 0 107 10 70 24 -12 4 -15 27 -15 116 l0 111 61 -3 60 -3 52 -98 c45 -84 50 -100 39 -117 -6 -11 -12 -22 -12 -25 0 -3 43 -5 95 -5 52 0 95 4 95 8 0 5 -9 17 -21 28 -18 16 -129 203 -129 218 0 3 18 15 40 26 130 66 111 289 -26 321 -50 11 -394 12 -394 0z m374 -117 c21 -20 20 -83 -1 -106 -14 -15 -32 -18 -125 -18 l-108 0 0 70 0 70 109 0 c86 0 113 -3 125 -16z"/> <path d="M6627 3756 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M7677 3756 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M8771 3756 c-51 -17 -98 -58 -117 -103 -20 -46 -17 -130 5 -180 26 -55 63 -73 189 -90 57 -7 112 -18 123 -23 25 -14 25 -62 -1 -85 -46 -42 -205 -27 -264 26 l-33 28 -18 -57 c-9 -31 -20 -63 -23 -71 -3 -9 -1 -12 6 -7 6 4 33 -4 59 -17 127 -65 287 -55 355 20 49 54 61 149 28 220 -31 69 -71 85 -268 109 -88 10 -106 71 -32 109 61 32 170 12 226 -40 l33 -32 26 64 c28 71 29 77 14 68 -5 -4 -41 9 -79 29 -81 43 -161 54 -229 32z"/> <path d="M8080 3741 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 78 0 107 10 70 24 -12 4 -15 27 -15 116 l0 111 61 -3 60 -3 52 -98 c45 -84 50 -100 39 -117 -6 -11 -12 -22 -12 -25 0 -3 43 -5 95 -5 52 0 95 4 95 8 0 5 -9 17 -21 28 -18 16 -129 203 -129 218 0 3 18 15 40 26 130 66 111 289 -26 321 -50 11 -394 12 -394 0z m374 -117 c21 -20 20 -83 -1 -106 -14 -15 -32 -18 -125 -18 l-108 0 0 70 0 70 109 0 c86 0 113 -3 125 -16z"/> </g> </svg></div></div>
+
+<div class="hero">
+  <div class="hero-center">
+    <div class="badges">
+      <span class="badge badge-blue">Авто в дорозі</span>
+      <span class="badge badge-outline">📅 Орієнтовно в Україні кінець липня 2026</span>
+    </div>
+    <h1>LIXIANG <span>L6 MAX</span></h1>
+    <div class="hero-sub">2025 р.в. &nbsp;·&nbsp; EREV &nbsp;·&nbsp; Пробіг ≈8 600 км</div>
+    <div class="price-usd">екв. <span>$</span>46 777</div>
+  </div>
+  <div class="gallery-wrap">
+    <img id="mainPhoto" class="gallery-main" alt="Lixiang L6 Max">
+    <div class="gallery-overlay" id="overlay" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)"></div>
+    <div class="watermark"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PiA8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLVNWRy0yMDAxMDkwNC9EVEQvc3ZnMTAuZHRkIj4gPHN2ZyB2ZXJzaW9uPSIxLjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwMDAuMDAwMDAwIDEwMDAuMDAwMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4gPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMTAwMC4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0ibm9uZSI+IDxwYXRoIGQ9Ik03ODc1IDcwNDAgYy02MTYgLTk1MiAtMTEyMiAtMTczMCAtMTEyNSAtMTczMCAtMyAwIC04NiA1NTUgLTE4NCAxMjMzIC05OCA2NzcgLTE4MSAxMjQ4IC0xODUgMTI2NyAtNSAyMiAtMTAgLTI4IC0xNCAtMTQwIC0zMCAtNzkwIC0zNzUgLTE4NTUgLTEwMTQgLTMxMzUgLTI2NyAtNTMyIC01ODAgLTEwOTIgLTg5NyAtMTYwMCAtMTgxIC0yOTEgLTE3OSAtMjk4IDIyIC05OCAyMTAgMjEwIDM5NyA0NTQgNjEwIDc5NCAzOTkgNjM5IDg1MCAxNjEzIDExOTcgMjU4NyAyNiA3MyA0OSAxMzEgNTAgMTMwIDIgLTIgODUgLTQ0NiAxODQgLTk4NyAxMDAgLTU0MiAxODMgLTk4NiAxODQgLTk4OCAyIC0yIDEzMDIgMjQ3NiAyMjI1IDQyMzkgNDUgODcgNzkgMTU4IDc0IDE1OCAtNSAwIC01MTIgLTc3OCAtMTEyNyAtMTczMHoiLz4gPHBhdGggZD0iTTkzMCA3NzE1IGwwIC0yMTUgODgwIDAgODgwIDAgMCAxOTkgYzAgMTEwIC0zIDIwNiAtNiAyMTUgLTYgMTQgLTkyIDE2IC04ODAgMTYgbC04NzQgMCAwIC0yMTV6Ii8+IDxwYXRoIGQ9Ik0yODQ1IDc5MTggYy0zIC03IC00IC04MjEgLTMgLTE4MDggbDMgLTE3OTUgMTY1IDAgMTY1IDAgMyAxODA4IDIgMTgwNyAtMTY1IDAgYy0xMjMgMCAtMTY3IC0zIC0xNzAgLTEyeiIvPiA8cGF0aCBkPSJNMzM0MCA2MTIwIGwwIC0xODEwIDE2OSAwIGMxNDUgMCAxNzAgMiAxNzUgMTYgMyA5IDYgNTU5IDYgMTIyMiAtMSAxMDY4IC01IDEzOTggLTI0IDE3ODUgLTMgNTYgLTMgOTMgMCA4MiAzIC0xMSAxOSAtNzYgMzYgLTE0NSAyNiAtMTA5IDM1MCAtOTk3IDEwNTMgLTI4ODcgbDI3IC03MyA4MyAwIGM3MCAwIDg0IDMgOTAgMTggNjIgMTU2IDEwMjQgMjc1MCAxMDQyIDI4MDcgNTcgMTkzIDcyIDMwNCA3MyA1NDUgMCAxMjQgMSAyMzEgMCAyMzggMCA4IC0yMSAxMiAtNjkgMTIgLTU2IDAgLTcwIC0zIC03NiAtMTcgLTIzIC01OCAtOTYxIC0yNjIxIC05ODAgLTI2NzggLTEzIC0zOCAtMzUgLTEwNyAtNDggLTE1MyAtMTMgLTQ2IC0yNyAtODQgLTMyIC04NSAtNCAtMSAtMzYgODYgLTcxIDE5MyAtMzUgMTA3IC0yNzggNzY4IC01NDEgMTQ2OCBsLTQ3NyAxMjcyIC0yMTggMCAtMjE4IDAgMCAtMTgxMHoiLz4gPHBhdGggZD0iTTg5NDUgNzcyOCBjLTEzMyAtMTQzIC0yODcgLTM2MCAtNDQ5IC02MzEgLTI4OSAtNDg1IC02OTEgLTEzMTAgLTEwMTEgLTIwNzcgLTQyIC0xMDIgLTgxIC0xODkgLTg1IC0xOTMgLTQgLTUgLTMxIDc2IC02MCAxODAgLTI4IDEwMyAtNTUgMTkzIC01OSAyMDAgLTMgNiAtMzQgLTQyIC03MCAtMTEwIGwtNjQgLTEyMiA4OSAtNDAwIDg4IC0zOTkgMTggODkgYzM3IDE4NSAxNTMgNDkxIDM1MyA5MzUgMjM5IDUzMSA5MDQgMTgyMSAxMzA3IDI1MzcgMTYgMjggMjUgNTQgMTkgNTcgLTUgMyAtMzkgLTI3IC03NiAtNjZ6Ii8+IDxwYXRoIGQ9Ik02ODI3IDcwNDggbC0xNTggLTM1MiAyMSAtMTM2IGMxMiAtNzQgMjUgLTE0MyAyOSAtMTU0IDUgLTE0IDI2IDEwIDEwMSAxMTcgNTIgNzUgOTggMTM2IDEwMSAxMzYgNCAxIDM1IC0xMTIgNjkgLTI1MCBsNjMgLTI1MCA1OSA4OCBjMzIgNDggNjYgMTAxIDc0IDExNiAxNCAyNiA4IDU5IC04NiA1MTUgLTU2IDI2OCAtMTA0IDQ5NSAtMTA4IDUwNCAtNSAxMiAtNTYgLTkxIC0xNjUgLTMzNHoiLz4gPHBhdGggZD0iTTEzNDAgNjE2NSBsMCAtMTk1IDY3MyAyIDY3MiAzIDMgMTcwIGMxIDk0IDAgMTgwIC0zIDE5MyBsLTUgMjIgLTY3MCAwIC02NzAgMCAwIC0xOTV6Ii8+IDxwYXRoIGQ9Ik01Njk2IDQzODAgYy0zNTcgLTcxMiAtNjUyIC0xMzA4IC02NTcgLTEzMjUgbC04IC0zMCAyNSAzMCBjMTI1IDE0OCA1NTMgODAwIDExMzIgMTcyNiAxNDcgMjM1IDI0MiAzOTYgMjQyIDQxMSAwIDE5IC02MiAzNjcgLTgzIDQ2OCAtMiA4IC0yOTUgLTU2OCAtNjUxIC0xMjgweiIvPiA8cGF0aCBkPSJNOTMyIDQ1MzMgbDMgLTIxOCA4NzUgMCA4NzUgMCAzIDE5NSBjMSAxMDcgMCAyMDUgLTMgMjE4IGwtNSAyMiAtODc1IDAgLTg3NSAwIDIgLTIxN3oiLz4gPHBhdGggZD0iTTE0MzcgMzkyMCBjLTUgLTE5IC0xNCAtMjAgLTI3MSAtMjAgLTE0NiAwIC0yNjYgLTMgLTI2NiAtNiAwIC0zIDcgLTEyIDE1IC0yMCAyMiAtMjMgMjIgLTY2NSAwIC02ODggLTggLTggLTE1IC0xNyAtMTUgLTIwIDAgLTMgMTIyIC02IDI3MCAtNiBsMjcxIDAgOSAtMjIgYzYgLTE2IDkgOSA5IDgyIDAgNzMgLTMgOTggLTkgODMgLTkgLTIzIC0xMSAtMjMgLTIwNSAtMjMgbC0xOTUgMCAwIDEwMCAwIDEwMCAxMjQgMCBjMTE3IDAgMTI0IC0xIDEzOSAtMjIgMTUgLTIyIDE2IC0xNiAxNiA4MiAxIDk3IDAgMTAzIC0xNSA4MiAtMTQgLTIxIC0yMiAtMjIgLTE0MCAtMjIgbC0xMjQgMCAwIDkwIDAgOTAgMTkwIDAgYzE4OCAwIDE5MSAwIDIwMCAtMjIgNiAtMTYgOSA4IDkgODAgMSAxMDEgLTIgMTIwIC0xMiA4MnoiLz4gPHBhdGggZD0iTTU2NDAgMzg3NCBjMCAtMyA3IC0xMiAxNSAtMjAgMTMgLTEzIDE1IC02NSAxNSAtMzQ0IDAgLTI3OSAtMiAtMzMxIC0xNSAtMzQ0IC04IC04IC0xNSAtMTcgLTE1IC0yMCAwIC0zIDM4IC02IDg1IC02IDQ3IDAgODUgMyA4NSA3IDAgMyAtNyAxNCAtMTUgMjMgLTEzIDE0IC0xNSA1MyAtMTMgMjQ2IGwzIDIyOSA5NCAtMjI1IGM1MSAtMTI0IDk5IC0yMzUgMTA1IC0yNDggMTEgLTIyIDIyIC0yIDEyMiAyMjUgbDEwOSAyNDggMyAtMjI5IGMyIC0xOTMgMCAtMjMyIC0xMyAtMjQ2IC04IC05IC0xNSAtMjAgLTE1IC0yMyAwIC00IDQxIC03IDkwIC03IDg5IDAgMTA0IDYgNzUgMzAgLTEzIDExIC0xNSA2MSAtMTUgMzQwIDAgMjc5IDIgMzI5IDE1IDM0MCAzMCAyNSAxMyAzMCAtOTUgMzAgLTYwIDAgLTExMCAtMyAtMTEwIC02IDAgLTMgNyAtMTIgMTUgLTIwIDE3IC0xNyAyMyAwIC04MCAtMjQzIC03MiAtMTcwIC03OSAtMTgyIC05MCAtMTYwIC03IDEzIC00NSAxMDQgLTg2IDIwMiAtNjEgMTUxIC03MSAxODIgLTYxIDE5OCA3IDEwIDEyIDIxIDEyIDI0IDAgMyAtNDkgNSAtMTEwIDUgLTYwIDAgLTExMCAtMyAtMTEwIC02eiIvPiA8cGF0aCBkPSJNMjQ0MiAzNzkwIGMtMTIgLTE5IC0yMyAtMjAgLTIzMiAtMjAgLTEyMSAwIC0yMjAgLTQgLTIyMCAtOSAwIC01IDcgLTE0IDE1IC0yMSAxMyAtMTAgMTUgLTU0IDE1IC0yNzUgMCAtMjIxIC0yIC0yNjUgLTE1IC0yNzUgLTggLTcgLTE1IC0xNiAtMTUgLTIxIDAgLTUgMTAzIC05IDIyOCAtOSAyMjggMCAyMjkgMCAyNDAgLTIyIDggLTE4IDExIC0yIDExIDc3IDAgNzkgLTMgOTUgLTExIDc4IC0xMSAtMjIgLTE1IC0yMyAtMTcwIC0yMyBsLTE1OCAwIDAgNzUgMCA3NSA5OCAwIGM5MyAwIDEwMCAtMSAxMTAgLTIyIDggLTE4IDExIC0yIDExIDc3IDEgOTMgMCA5OCAtMTUgNzcgLTE0IC0yMCAtMjMgLTIyIC0xMTAgLTIyIGwtOTQgMCAwIDY1IDAgNjUgMTQ5IDAgYzE0NCAwIDE1MSAtMSAxNjUgLTIyIDE1IC0yMSAxNiAtMTYgMTYgNzUgMCA1MyAtMSA5NyAtMyA5NyAtMSAwIC04IC05IC0xNSAtMjB6Ii8+IDxwYXRoIGQ9Ik0zMDYxIDM3MTUgYzAgLTcwIDMgLTkzIDkgLTc3IDkgMjAgMTYgMjIgOTAgMjIgbDgwIDAgMCAtMjI5IGMwIC0xOTEgLTMgLTIzMiAtMTUgLTI0NSAtOCAtOCAtMTUgLTE3IC0xNSAtMjAgMCAtMyAzOCAtNiA4NSAtNiA0NyAwIDg1IDMgODUgNiAwIDMgLTcgMTIgLTE1IDIwIC0xMiAxMyAtMTUgNTQgLTE1IDI0NSBsMCAyMjkgNzggMCBjNzIgMCA4MCAtMiA5MCAtMjIgOCAtMTggMTEgLTIgMTEgNzcgMCA3MCAtMyA5MyAtOSA3OCAtOSAtMjMgLTExIC0yMyAtMjI1IC0yMyAtMjE0IDAgLTIxNiAwIC0yMjUgMjMgLTYgMTUgLTkgLTggLTkgLTc4eiIvPiA8cGF0aCBkPSJNMjcwNyAzNzc2IGMtNjggLTE5IC0xMTYgLTYyIC0xNTcgLTE0MSAtMzMgLTY0IC0zNSAtNzMgLTM1IC0xNjUgMCAtOTIgMiAtMTAyIDM1IC0xNjYgNDMgLTg1IDk2IC0xMjggMTc3IC0xNDUgODQgLTE3IDE2MiAtMSAyMzYgNTEgMzIgMjIgNjUgNDAgNzMgNDAgMTAgMCA1IDE3IC0xOCA2NSAtMzQgNjkgLTQ1IDc4IC01MCA0MyAtNSAtMzQgLTc4IC04MCAtMTM2IC04NiAtNjcgLTYgLTExNCAxMSAtMTU1IDU3IC05MiAxMDIgLTUyIDI5MSA3MCAzMzIgNzYgMjUgMjA2IC0xOCAyMjAgLTcyIDggLTMwIDE4IC0yMyA1MiA0MCAzNSA2NiAzNyA3MyAxNyA2NSAtNyAtMyAtMzkgMTMgLTcwIDM1IC04MyA1OCAtMTY0IDcyIC0yNTkgNDd6Ii8+IDxwYXRoIGQ9Ik00MzA3IDM3NzYgYy03MCAtMTkgLTExNyAtNjEgLTE1NyAtMTQxIC0zMyAtNjUgLTM1IC03NSAtMzUgLTE2NSAwIC04OCAzIC0xMDEgMzMgLTE2MyAzOCAtNzcgODcgLTEyMSAxNTYgLTE0MiA2MyAtMTkgOTkgLTE5IDE2NSAxIDY3IDE5IDEyMyA3MCAxNTggMTQyIDI1IDUxIDI4IDY3IDI4IDE2MiAwIDk1IC0zIDExMSAtMjggMTYyIC0zNSA3MiAtOTEgMTIzIC0xNTggMTQyIC02MiAxOSAtOTcgMTkgLTE2MiAyeiBtMTQyIC0xMjEgYzExNCAtNTggMTM2IC0yMzcgNDIgLTMzOCAtMzIgLTM0IC00NSAtNDAgLTg3IC00NCAtMzUgLTQgLTYwIDAgLTgyIDExIC0xMjYgNjUgLTEzMSAyOTIgLTggMzY3IDM3IDIzIDk2IDI1IDEzNSA0eiIvPiA8cGF0aCBkPSJNNzAwMSAzNjk1IGMwIC03MCAzIC05MyA5IC03NyA5IDIwIDE2IDIyIDkwIDIyIGw4MCAwIDAgLTIyOSBjMCAtMTkxIC0zIC0yMzIgLTE1IC0yNDUgLTggLTggLTE1IC0xNyAtMTUgLTIwIDAgLTMgMzggLTYgODUgLTYgNDcgMCA4NSAzIDg1IDYgMCAzIC03IDEyIC0xNSAyMCAtMTIgMTMgLTE1IDU0IC0xNSAyNDUgbDAgMjI5IDc4IDAgYzcyIDAgODAgLTIgOTAgLTIyIDggLTE4IDExIC0yIDExIDc3IDAgNzAgLTMgOTMgLTkgNzggLTkgLTIzIC0xMSAtMjMgLTIyNSAtMjMgLTIxNCAwIC0yMTYgMCAtMjI1IDIzIC02IDE1IC05IC04IC05IC03OHoiLz4gPHBhdGggZD0iTTE1MjAgMzc2MSBjMCAtNSA3IC0xNCAxNSAtMjEgMTMgLTEwIDE1IC01NCAxNSAtMjc2IDAgLTIyMCAtMiAtMjY1IC0xNSAtMjc4IC04IC04IC0xNSAtMTcgLTE1IC0yMCAwIC0zIDk0IC02IDIxMCAtNiAxODggMCAyMTAgLTIgMjE5IC0xNyA4IC0xMyAxMCA2IDEwIDcyIDAgNjYgLTIgODUgLTEwIDczIC05IC0xNiAtMjcgLTE4IC0xNDkgLTE4IGwtMTQwIDAgMCAyMzUgYzAgMjAwIDIgMjM2IDE1IDI0MSAzNyAxNCA4IDI0IC03MCAyNCAtNDcgMCAtODUgLTQgLTg1IC05eiIvPiA8cGF0aCBkPSJNMzU2MCAzNzYxIGMwIC01IDcgLTE0IDE1IC0yMSAxMyAtMTAgMTUgLTU0IDE1IC0yNzYgMCAtMjIwIC0yIC0yNjUgLTE1IC0yNzggLTggLTggLTE1IC0xNyAtMTUgLTIwIDAgLTMgMzggLTYgODUgLTYgNzggMCAxMDcgMTAgNzAgMjQgLTEyIDQgLTE1IDI3IC0xNSAxMTYgbDAgMTExIDYxIC0zIDYwIC0zIDUyIC05OCBjNDUgLTg0IDUwIC0xMDAgMzkgLTExNyAtNiAtMTEgLTEyIC0yMiAtMTIgLTI1IDAgLTMgNDMgLTUgOTUgLTUgNTIgMCA5NSA0IDk1IDggMCA1IC05IDE3IC0yMSAyOCAtMTggMTYgLTEyOSAyMDMgLTEyOSAyMTggMCAzIDE4IDE1IDQwIDI2IDEzMCA2NiAxMTEgMjg5IC0yNiAzMjEgLTUwIDExIC0zOTQgMTIgLTM5NCAweiBtMzc0IC0xMTcgYzIxIC0yMCAyMCAtODMgLTEgLTEwNiAtMTQgLTE1IC0zMiAtMTggLTEyNSAtMTggbC0xMDggMCAwIDcwIDAgNzAgMTA5IDAgYzg2IDAgMTEzIC0zIDEyNSAtMTZ6Ii8+IDxwYXRoIGQ9Ik02NjI3IDM3NTYgYy03MCAtMTkgLTExNyAtNjEgLTE1NyAtMTQxIC0zMyAtNjUgLTM1IC03NSAtMzUgLTE2NSAwIC04OCAzIC0xMDEgMzMgLTE2MyAzOCAtNzcgODcgLTEyMSAxNTYgLTE0MiA2MyAtMTkgOTkgLTE5IDE2NSAxIDY3IDE5IDEyMyA3MCAxNTggMTQyIDI1IDUxIDI4IDY3IDI4IDE2MiAwIDk1IC0zIDExMSAtMjggMTYyIC0zNSA3MiAtOTEgMTIzIC0xNTggMTQyIC02MiAxOSAtOTcgMTkgLTE2MiAyeiBtMTQyIC0xMjEgYzExNCAtNTggMTM2IC0yMzcgNDIgLTMzOCAtMzIgLTM0IC00NSAtNDAgLTg3IC00NCAtMzUgLTQgLTYwIDAgLTgyIDExIC0xMjYgNjUgLTEzMSAyOTIgLTggMzY3IDM3IDIzIDk2IDI1IDEzNSA0eiIvPiA8cGF0aCBkPSJNNzY3NyAzNzU2IGMtNzAgLTE5IC0xMTcgLTYxIC0xNTcgLTE0MSAtMzMgLTY1IC0zNSAtNzUgLTM1IC0xNjUgMCAtODggMyAtMTAxIDMzIC0xNjMgMzggLTc3IDg3IC0xMjEgMTU2IC0xNDIgNjMgLTE5IDk5IC0xOSAxNjUgMSA2NyAxOSAxMjMgNzAgMTU4IDE0MiAyNSA1MSAyOCA2NyAyOCAxNjIgMCA5NSAtMyAxMTEgLTI4IDE2MiAtMzUgNzIgLTkxIDEyMyAtMTU4IDE0MiAtNjIgMTkgLTk3IDE5IC0xNjIgMnogbTE0MiAtMTIxIGMxMTQgLTU4IDEzNiAtMjM3IDQyIC0zMzggLTMyIC0zNCAtNDUgLTQwIC04NyAtNDQgLTM1IC00IC02MCAwIC04MiAxMSAtMTI2IDY1IC0xMzEgMjkyIC04IDM2NyAzNyAyMyA5NiAyNSAxMzUgNHoiLz4gPHBhdGggZD0iTTg3NzEgMzc1NiBjLTUxIC0xNyAtOTggLTU4IC0xMTcgLTEwMyAtMjAgLTQ2IC0xNyAtMTMwIDUgLTE4MCAyNiAtNTUgNjMgLTczIDE4OSAtOTAgNTcgLTcgMTEyIC0xOCAxMjMgLTIzIDI1IC0xNCAyNSAtNjIgLTEgLTg1IC00NiAtNDIgLTIwNSAtMjcgLTI2NCAyNiBsLTMzIDI4IC0xOCAtNTcgYy05IC0zMSAtMjAgLTYzIC0yMyAtNzEgLTMgLTkgLTEgLTEyIDYgLTcgNiA0IDMzIC00IDU5IC0xNyAxMjcgLTY1IDI4NyAtNTUgMzU1IDIwIDQ5IDU0IDYxIDE0OSAyOCAyMjAgLTMxIDY5IC03MSA4NSAtMjY4IDEwOSAtODggMTAgLTEwNiA3MSAtMzIgMTA5IDYxIDMyIDE3MCAxMiAyMjYgLTQwIGwzMyAtMzIgMjYgNjQgYzI4IDcxIDI5IDc3IDE0IDY4IC01IC00IC00MSA5IC03OSAyOSAtODEgNDMgLTE2MSA1NCAtMjI5IDMyeiIvPiA8cGF0aCBkPSJNODA4MCAzNzQxIGMwIC01IDcgLTE0IDE1IC0yMSAxMyAtMTAgMTUgLTU0IDE1IC0yNzYgMCAtMjIwIC0yIC0yNjUgLTE1IC0yNzggLTggLTggLTE1IC0xNyAtMTUgLTIwIDAgLTMgMzggLTYgODUgLTYgNzggMCAxMDcgMTAgNzAgMjQgLTEyIDQgLTE1IDI3IC0xNSAxMTYgbDAgMTExIDYxIC0zIDYwIC0zIDUyIC05OCBjNDUgLTg0IDUwIC0xMDAgMzkgLTExNyAtNiAtMTEgLTEyIC0yMiAtMTIgLTI1IDAgLTMgNDMgLTUgOTUgLTUgNTIgMCA5NSA0IDk1IDggMCA1IC05IDE3IC0yMSAyOCAtMTggMTYgLTEyOSAyMDMgLTEyOSAyMTggMCAzIDE4IDE1IDQwIDI2IDEzMCA2NiAxMTEgMjg5IC0yNiAzMjEgLTUwIDExIC0zOTQgMTIgLTM5NCAweiBtMzc0IC0xMTcgYzIxIC0yMCAyMCAtODMgLTEgLTEwNiAtMTQgLTE1IC0zMiAtMTggLTEyNSAtMTggbC0xMDggMCAwIDcwIDAgNzAgMTA5IDAgYzg2IDAgMTEzIC0zIDEyNSAtMTZ6Ii8+IDwvZz4gPC9zdmc+" alt="EM"></div>
+    <div class="photo-err" id="photoErr">📷 Не вдалося завантажити фото.</div>
+    <div class="photo-counter"><span id="photoIdx">1</span> / <span id="photoTotal"></span></div>
+    <button class="nav-btn nav-prev" onclick="changePhoto(-1)">&#8249;</button>
+    <button class="nav-btn nav-next" onclick="changePhoto(1)">&#8250;</button>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Технічні характеристики</div>
+  <table class="specs-table">
+    <tr><td>Тип</td><td>EREV (Range Extender) · 1.5T + два електромотори</td></tr>
+    <tr><td>Батарея</td><td class="highlight">36.8 кВт·год LFP CATL</td></tr>
+    <tr><td>Запас ходу EV</td><td class="highlight">212 км (CLTC)</td></tr>
+    <tr><td>Повний запас ходу</td><td class="highlight">1 390 км (CLTC)</td></tr>
+    <tr><td>Привід</td><td>4WD (Dual Motor AWD)</td></tr>
+    <tr><td>Потужність системи</td><td class="highlight">408 к.с. (300 кВт)</td></tr>
+    <tr><td>Крутний момент</td><td>529 Нм</td></tr>
+    <tr><td>0–100 км/год</td><td class="highlight">5.4 с</td></tr>
+    <tr><td>Розміри Д×Ш×В</td><td>4925 × 1960 × 1735 мм</td></tr>
+    <tr><td>Колісна база</td><td>2920 мм</td></tr>
+  </table>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-title">Особливості</div>
+  <div class="features-grid">
+    <div class="feature-item">✦ Колір Sky Blue Special Edition (Pearl Paint)</div>
+    <div class="feature-item">✦ Двотонний салон Nappa чорний + коричневий</div>
+    <div class="feature-item">✦ Колеса 265/45 R21</div>
+    <div class="feature-item">✦ Підігрів / масаж / вентиляція передніх сидінь</div>
+    <div class="feature-item">✦ Підігрів / вентиляція задніх сидінь</div>
+    <div class="feature-item">✦ Підігрів керма</div>
+    <div class="feature-item">✦ Проекція на лобове скло (HUD)</div>
+    <div class="feature-item">✦ Мультимедійний екран переднього пасажира</div>
+    <div class="feature-item">✦ Холодильник у салоні</div>
+    <div class="feature-item">✦ Амортизатори CDC Sport Suspension</div>
+    <div class="feature-item">✦ Віддача енергії V2L 3.5 кВт</div>
+    <div class="feature-item">✦ Platinum Audio: Dolby Atmos / Dolby Vision · 19 динаміків · 1920 Вт · 7.3.4</div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-title">Відео огляд</div>
+  <div class="video-carousel">
+    <button class="video-nav-btn video-prev" onclick="changeVideo(-1)">&#8249;</button>
+    <button class="video-nav-btn video-next" onclick="changeVideo(1)">&#8250;</button>
+    <div class="video-slides" id="videoSlides">
+      <div class="video-slide"><div class="video-wrap"><iframe src="https://drive.google.com/file/d/1bdwFiPzVpzFgvOvvi-44GtLQu0KZ9FVE/preview?usp=sharing" allow="autoplay; fullscreen" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe></div></div>
+      <div class="video-slide"><div class="video-wrap"><iframe src="https://drive.google.com/file/d/1-gx81sEhF9sz3k1S5XuqpcYsCT05owsb/preview?usp=sharing" allow="autoplay; fullscreen" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe></div></div>
+      <div class="video-slide"><div class="video-wrap"><iframe src="https://drive.google.com/file/d/1GP4WoY-D-0QKadQzpyzQGsh6soN45Cjq/preview?usp=sharing" allow="autoplay; fullscreen" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe></div></div>
+    </div>
+    <div class="video-dots" id="videoDots"></div>
+  </div>
+</div>
+
+<div class="price-block">
+  <div class="price-row"><div class="price-tag">Вартість</div><div class="price-amount">екв. $46 777</div></div>
+  <div class="divider"></div>
+  <div class="payment-note">📋 Оплата на рахунок ТОВ<br>💳 Можливість купівлі в кредит та розтермінування від 10%</div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo"><?xml version="1.0" standalone="no"?> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000.000000 1000.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,1000.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none"> <path d="M7875 7040 c-616 -952 -1122 -1730 -1125 -1730 -3 0 -86 555 -184 1233 -98 677 -181 1248 -185 1267 -5 22 -10 -28 -14 -140 -30 -790 -375 -1855 -1014 -3135 -267 -532 -580 -1092 -897 -1600 -181 -291 -179 -298 22 -98 210 210 397 454 610 794 399 639 850 1613 1197 2587 26 73 49 131 50 130 2 -2 85 -446 184 -987 100 -542 183 -986 184 -988 2 -2 1302 2476 2225 4239 45 87 79 158 74 158 -5 0 -512 -778 -1127 -1730z"/> <path d="M930 7715 l0 -215 880 0 880 0 0 199 c0 110 -3 206 -6 215 -6 14 -92 16 -880 16 l-874 0 0 -215z"/> <path d="M2845 7918 c-3 -7 -4 -821 -3 -1808 l3 -1795 165 0 165 0 3 1808 2 1807 -165 0 c-123 0 -167 -3 -170 -12z"/> <path d="M3340 6120 l0 -1810 169 0 c145 0 170 2 175 16 3 9 6 559 6 1222 -1 1068 -5 1398 -24 1785 -3 56 -3 93 0 82 3 -11 19 -76 36 -145 26 -109 350 -997 1053 -2887 l27 -73 83 0 c70 0 84 3 90 18 62 156 1024 2750 1042 2807 57 193 72 304 73 545 0 124 1 231 0 238 0 8 -21 12 -69 12 -56 0 -70 -3 -76 -17 -23 -58 -961 -2621 -980 -2678 -13 -38 -35 -107 -48 -153 -13 -46 -27 -84 -32 -85 -4 -1 -36 86 -71 193 -35 107 -278 768 -541 1468 l-477 1272 -218 0 -218 0 0 -1810z"/> <path d="M8945 7728 c-133 -143 -287 -360 -449 -631 -289 -485 -691 -1310 -1011 -2077 -42 -102 -81 -189 -85 -193 -4 -5 -31 76 -60 180 -28 103 -55 193 -59 200 -3 6 -34 -42 -70 -110 l-64 -122 89 -400 88 -399 18 89 c37 185 153 491 353 935 239 531 904 1821 1307 2537 16 28 25 54 19 57 -5 3 -39 -27 -76 -66z"/> <path d="M6827 7048 l-158 -352 21 -136 c12 -74 25 -143 29 -154 5 -14 26 10 101 117 52 75 98 136 101 136 4 1 35 -112 69 -250 l63 -250 59 88 c32 48 66 101 74 116 14 26 8 59 -86 515 -56 268 -104 495 -108 504 -5 12 -56 -91 -165 -334z"/> <path d="M1340 6165 l0 -195 673 2 672 3 3 170 c1 94 0 180 -3 193 l-5 22 -670 0 -670 0 0 -195z"/> <path d="M5696 4380 c-357 -712 -652 -1308 -657 -1325 l-8 -30 25 30 c125 148 553 800 1132 1726 147 235 242 396 242 411 0 19 -62 367 -83 468 -2 8 -295 -568 -651 -1280z"/> <path d="M932 4533 l3 -218 875 0 875 0 3 195 c1 107 0 205 -3 218 l-5 22 -875 0 -875 0 2 -217z"/> <path d="M1437 3920 c-5 -19 -14 -20 -271 -20 -146 0 -266 -3 -266 -6 0 -3 7 -12 15 -20 22 -23 22 -665 0 -688 -8 -8 -15 -17 -15 -20 0 -3 122 -6 270 -6 l271 0 9 -22 c6 -16 9 9 9 82 0 73 -3 98 -9 83 -9 -23 -11 -23 -205 -23 l-195 0 0 100 0 100 124 0 c117 0 124 -1 139 -22 15 -22 16 -16 16 82 1 97 0 103 -15 82 -14 -21 -22 -22 -140 -22 l-124 0 0 90 0 90 190 0 c188 0 191 0 200 -22 6 -16 9 8 9 80 1 101 -2 120 -12 82z"/> <path d="M5640 3874 c0 -3 7 -12 15 -20 13 -13 15 -65 15 -344 0 -279 -2 -331 -15 -344 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 7 0 3 -7 14 -15 23 -13 14 -15 53 -13 246 l3 229 94 -225 c51 -124 99 -235 105 -248 11 -22 22 -2 122 225 l109 248 3 -229 c2 -193 0 -232 -13 -246 -8 -9 -15 -20 -15 -23 0 -4 41 -7 90 -7 89 0 104 6 75 30 -13 11 -15 61 -15 340 0 279 2 329 15 340 30 25 13 30 -95 30 -60 0 -110 -3 -110 -6 0 -3 7 -12 15 -20 17 -17 23 0 -80 -243 -72 -170 -79 -182 -90 -160 -7 13 -45 104 -86 202 -61 151 -71 182 -61 198 7 10 12 21 12 24 0 3 -49 5 -110 5 -60 0 -110 -3 -110 -6z"/> <path d="M2442 3790 c-12 -19 -23 -20 -232 -20 -121 0 -220 -4 -220 -9 0 -5 7 -14 15 -21 13 -10 15 -54 15 -275 0 -221 -2 -265 -15 -275 -8 -7 -15 -16 -15 -21 0 -5 103 -9 228 -9 228 0 229 0 240 -22 8 -18 11 -2 11 77 0 79 -3 95 -11 78 -11 -22 -15 -23 -170 -23 l-158 0 0 75 0 75 98 0 c93 0 100 -1 110 -22 8 -18 11 -2 11 77 1 93 0 98 -15 77 -14 -20 -23 -22 -110 -22 l-94 0 0 65 0 65 149 0 c144 0 151 -1 165 -22 15 -21 16 -16 16 75 0 53 -1 97 -3 97 -1 0 -8 -9 -15 -20z"/> <path d="M3061 3715 c0 -70 3 -93 9 -77 9 20 16 22 90 22 l80 0 0 -229 c0 -191 -3 -232 -15 -245 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 6 0 3 -7 12 -15 20 -12 13 -15 54 -15 245 l0 229 78 0 c72 0 80 -2 90 -22 8 -18 11 -2 11 77 0 70 -3 93 -9 78 -9 -23 -11 -23 -225 -23 -214 0 -216 0 -225 23 -6 15 -9 -8 -9 -78z"/> <path d="M2707 3776 c-68 -19 -116 -62 -157 -141 -33 -64 -35 -73 -35 -165 0 -92 2 -102 35 -166 43 -85 96 -128 177 -145 84 -17 162 -1 236 51 32 22 65 40 73 40 10 0 5 17 -18 65 -34 69 -45 78 -50 43 -5 -34 -78 -80 -136 -86 -67 -6 -114 11 -155 57 -92 102 -52 291 70 332 76 25 206 -18 220 -72 8 -30 18 -23 52 40 35 66 37 73 17 65 -7 -3 -39 13 -70 35 -83 58 -164 72 -259 47z"/> <path d="M4307 3776 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M7001 3695 c0 -70 3 -93 9 -77 9 20 16 22 90 22 l80 0 0 -229 c0 -191 -3 -232 -15 -245 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 47 0 85 3 85 6 0 3 -7 12 -15 20 -12 13 -15 54 -15 245 l0 229 78 0 c72 0 80 -2 90 -22 8 -18 11 -2 11 77 0 70 -3 93 -9 78 -9 -23 -11 -23 -225 -23 -214 0 -216 0 -225 23 -6 15 -9 -8 -9 -78z"/> <path d="M1520 3761 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 94 -6 210 -6 188 0 210 -2 219 -17 8 -13 10 6 10 72 0 66 -2 85 -10 73 -9 -16 -27 -18 -149 -18 l-140 0 0 235 c0 200 2 236 15 241 37 14 8 24 -70 24 -47 0 -85 -4 -85 -9z"/> <path d="M3560 3761 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 78 0 107 10 70 24 -12 4 -15 27 -15 116 l0 111 61 -3 60 -3 52 -98 c45 -84 50 -100 39 -117 -6 -11 -12 -22 -12 -25 0 -3 43 -5 95 -5 52 0 95 4 95 8 0 5 -9 17 -21 28 -18 16 -129 203 -129 218 0 3 18 15 40 26 130 66 111 289 -26 321 -50 11 -394 12 -394 0z m374 -117 c21 -20 20 -83 -1 -106 -14 -15 -32 -18 -125 -18 l-108 0 0 70 0 70 109 0 c86 0 113 -3 125 -16z"/> <path d="M6627 3756 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M7677 3756 c-70 -19 -117 -61 -157 -141 -33 -65 -35 -75 -35 -165 0 -88 3 -101 33 -163 38 -77 87 -121 156 -142 63 -19 99 -19 165 1 67 19 123 70 158 142 25 51 28 67 28 162 0 95 -3 111 -28 162 -35 72 -91 123 -158 142 -62 19 -97 19 -162 2z m142 -121 c114 -58 136 -237 42 -338 -32 -34 -45 -40 -87 -44 -35 -4 -60 0 -82 11 -126 65 -131 292 -8 367 37 23 96 25 135 4z"/> <path d="M8771 3756 c-51 -17 -98 -58 -117 -103 -20 -46 -17 -130 5 -180 26 -55 63 -73 189 -90 57 -7 112 -18 123 -23 25 -14 25 -62 -1 -85 -46 -42 -205 -27 -264 26 l-33 28 -18 -57 c-9 -31 -20 -63 -23 -71 -3 -9 -1 -12 6 -7 6 4 33 -4 59 -17 127 -65 287 -55 355 20 49 54 61 149 28 220 -31 69 -71 85 -268 109 -88 10 -106 71 -32 109 61 32 170 12 226 -40 l33 -32 26 64 c28 71 29 77 14 68 -5 -4 -41 9 -79 29 -81 43 -161 54 -229 32z"/> <path d="M8080 3741 c0 -5 7 -14 15 -21 13 -10 15 -54 15 -276 0 -220 -2 -265 -15 -278 -8 -8 -15 -17 -15 -20 0 -3 38 -6 85 -6 78 0 107 10 70 24 -12 4 -15 27 -15 116 l0 111 61 -3 60 -3 52 -98 c45 -84 50 -100 39 -117 -6 -11 -12 -22 -12 -25 0 -3 43 -5 95 -5 52 0 95 4 95 8 0 5 -9 17 -21 28 -18 16 -129 203 -129 218 0 3 18 15 40 26 130 66 111 289 -26 321 -50 11 -394 12 -394 0z m374 -117 c21 -20 20 -83 -1 -106 -14 -15 -32 -18 -125 -18 l-108 0 0 70 0 70 109 0 c86 0 113 -3 125 -16z"/> </g> </svg></div>
+  <div class="vin-text">VIN: HLX32B144S1******</div>
+</div>
+
+<script>
+const photos = [
+  {urls:["https://lh3.googleusercontent.com/d/1-rZQ_-5r8n8-n_M8CdCjysfTyPGyeIOm","https://drive.google.com/thumbnail?id=1-rZQ_-5r8n8-n_M8CdCjysfTyPGyeIOm&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1NZwEMerc2gafLF9hJdCPjovd2rlAu_3T","https://drive.google.com/thumbnail?id=1NZwEMerc2gafLF9hJdCPjovd2rlAu_3T&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1Lb_qlQe905wO2p6diwj4zzCRW8s0cZgV","https://drive.google.com/thumbnail?id=1Lb_qlQe905wO2p6diwj4zzCRW8s0cZgV&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1J1BQd6xGTTsUBe5Q-86Z5CdXl3JTDlJc","https://drive.google.com/thumbnail?id=1J1BQd6xGTTsUBe5Q-86Z5CdXl3JTDlJc&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1voOCEks0eFoStUGgtyNpuqWPQ746_82Y","https://drive.google.com/thumbnail?id=1voOCEks0eFoStUGgtyNpuqWPQ746_82Y&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1yZHhxJ2eMoAuzdNTeLX9w1mhktpwVPdd","https://drive.google.com/thumbnail?id=1yZHhxJ2eMoAuzdNTeLX9w1mhktpwVPdd&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1lGXP6rDPnqZosn7WCx0Svv6o2BcCgJAz","https://drive.google.com/thumbnail?id=1lGXP6rDPnqZosn7WCx0Svv6o2BcCgJAz&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1yf1w4-VNufwQ4I9pg6-fKvRW9KX82tE-","https://drive.google.com/thumbnail?id=1yf1w4-VNufwQ4I9pg6-fKvRW9KX82tE-&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1cDk42BqTNyG_86pX4uIWa91ImLyokkrJ","https://drive.google.com/thumbnail?id=1cDk42BqTNyG_86pX4uIWa91ImLyokkrJ&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1wAeTfTHr_XgwLux6PaLWVnoAXp9xo_Uh","https://drive.google.com/thumbnail?id=1wAeTfTHr_XgwLux6PaLWVnoAXp9xo_Uh&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1UHLJy_-KtzQQM9JUABMeIa3-I2gRLEWw","https://drive.google.com/thumbnail?id=1UHLJy_-KtzQQM9JUABMeIa3-I2gRLEWw&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1kRnqZMBuEFfaaimkXgoQA4RT3chGME2U","https://drive.google.com/thumbnail?id=1kRnqZMBuEFfaaimkXgoQA4RT3chGME2U&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1RuD7Sq6Hu3HTTegq3AfDOPkWSiUp0xgX","https://drive.google.com/thumbnail?id=1RuD7Sq6Hu3HTTegq3AfDOPkWSiUp0xgX&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/10OR_D8UqHy1la6_n2jtnbXs961y0hMSJ","https://drive.google.com/thumbnail?id=10OR_D8UqHy1la6_n2jtnbXs961y0hMSJ&sz=w1280"]},
+  {urls:["https://lh3.googleusercontent.com/d/1x17mG9l8qUx8_GqPGoyj3owRjtUSshxp","https://drive.google.com/thumbnail?id=1x17mG9l8qUx8_GqPGoyj3owRjtUSshxp&sz=w1280"]}
+];
+let current = 0;
+const mainPhoto = document.getElementById('mainPhoto');
+const thumbsEl  = document.getElementById('thumbs');
+const photoIdx  = document.getElementById('photoIdx');
+const photoErr  = document.getElementById('photoErr');
+document.getElementById('photoTotal').textContent = photos.length;
+photos.forEach((p,i) => {
+  const img = document.createElement('img');
+  img.className = 'thumb' + (i===0?' active':'');
+  img.src = p.urls[1]; img.alt = 'Фото '+(i+1);
+  img.onclick = () => setPhoto(i);
+  thumbsEl.appendChild(img);
+});
+function tryLoad(urls,idx,onOk,onFail) {
+  if(idx>=urls.length){onFail();return;}
+  const t=new Image();
+  t.onload=()=>onOk(urls[idx]);
+  t.onerror=()=>tryLoad(urls,idx+1,onOk,onFail);
+  t.src=urls[idx];
+}
+function setPhoto(idx) {
+  current=(idx+photos.length)%photos.length;
+  mainPhoto.classList.add('loading'); photoErr.style.display='none';
+  tryLoad(photos[current].urls,0,
+    url=>{mainPhoto.src=url;mainPhoto.classList.remove('loading');},
+    ()=>{mainPhoto.classList.remove('loading');photoErr.style.display='block';}
+  );
+  photoIdx.textContent=current+1;
+  document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===current));
+  document.querySelectorAll('.thumb')[current].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+function changePhoto(dir){setPhoto(current+dir);}
+setPhoto(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')changePhoto(-1);if(e.key==='ArrowRight')changePhoto(1);});
+let tx=0;
+function handleTouchStart(e){tx=e.touches[0].clientX;}
+function handleTouchEnd(e){const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)changePhoto(dx<0?1:-1);}
+
+const videoSlides=document.getElementById('videoSlides');
+const dotsEl=document.getElementById('videoDots');
+const totalVideos=3;
+let currentVideo=0;
+for(let i=0;i<totalVideos;i++){
+  const d=document.createElement('button');
+  d.className='video-dot'+(i===0?' active':'');
+  d.onclick=()=>setVideo(i);
+  dotsEl.appendChild(d);
+}
+function setVideo(idx){
+  currentVideo=(idx+totalVideos)%totalVideos;
+  videoSlides.style.transform=`translateX(-${currentVideo*100}%)`;
+  document.querySelectorAll('.video-dot').forEach((d,i)=>d.classList.toggle('active',i===currentVideo));
+}
+function changeVideo(dir){setVideo(currentVideo+dir);}
+</script>
+</body>
+</html>
