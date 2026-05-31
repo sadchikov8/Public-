@@ -92,10 +92,14 @@
     .price-block{margin-left:40px;margin-right:40px;}
     .header{padding:14px 40px;}
   }
+
+  html{scroll-behavior:auto;}
 </style>
 </head>
 <body>
 <script>window.scrollTo(0,0);
+document.addEventListener('DOMContentLoaded',function(){window.scrollTo(0,0);});
+setTimeout(function(){window.scrollTo(0,0);},50);
 document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('dragstart',e=>e.preventDefault());</script>
 
 <div class="header">
