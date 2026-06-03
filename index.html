@@ -499,6 +499,14 @@
 
 <script>
 const filters = {type: 'all', brand: 'all', price: 'all'};
+
+// Читаємо URL параметри при завантаженні
+function readUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('brand')) filters.brand = params.get('brand');
+  if (params.get('type'))  filters.type  = params.get('type');
+  if (params.get('price')) filters.price = params.get('price');
+}
 let sortOrder = 'default';
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -511,6 +519,18 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     applyFilters();
   });
 });
+
+// Застосувати фільтри з URL при завантаженні
+readUrlParams();
+// Оновити кнопки відповідно до фільтрів
+['type','brand','price'].forEach(filterType => {
+  if (filters[filterType] !== 'all') {
+    document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
+    const btn = document.querySelector(`.filter-btn[data-filter="${filterType}"][data-value="${filters[filterType]}"]`);
+    if (btn) btn.classList.add('active');
+  }
+});
+applyFilters();
 
 document.getElementById('sortSelect').addEventListener('change', function() {
   sortOrder = this.value;
