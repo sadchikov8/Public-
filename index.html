@@ -101,15 +101,20 @@
       <span class="filter-label">Бренд:</span>
       <button class="filter-btn active" data-filter="brand" data-value="all">Всі</button>
       <button class="filter-btn" data-filter="brand" data-value="BYD">BYD</button>
-      <button class="filter-btn" data-filter="brand" data-value="ZEEKR">ZEEKR</button>
+      <button class="filter-btn" data-filter="brand" data-value="ZEEKR">Zeekr</button>
       <button class="filter-btn" data-filter="brand" data-value="Lixiang">Lixiang</button>
       <button class="filter-btn" data-filter="brand" data-value="Mercedes">Mercedes</button>
-      <button class="filter-btn" data-filter="brand" data-value="TAI">TAI</button>
+      <button class="filter-btn" data-filter="brand" data-value="Leopard">Leopard</button>
+      <button class="filter-btn" data-filter="brand" data-value="Denza">Denza</button>
       <button class="filter-btn" data-filter="brand" data-value="Mazda">Mazda</button>
       <button class="filter-btn" data-filter="brand" data-value="Honda">Honda</button>
       <button class="filter-btn" data-filter="brand" data-value="Xiaomi">Xiaomi</button>
-      <button class="filter-btn" data-filter="brand" data-value="ZEEKR 001">ZEEKR 001</button>
-      <button class="filter-btn" data-filter="brand" data-value="DENZA">DENZA</button>
+      <button class="filter-btn" data-filter="brand" data-value="Denza">Denza</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group">
+      
+      
     </div>
     <div class="filter-divider"></div>
     <div class="filter-group">
@@ -133,6 +138,16 @@
   </select>
 </div>
 
+<div class="filter-bar" style="padding-top:0">
+  <div class="filter-row">
+    <div class="filter-group">
+      <span class="filter-label">Статус:</span>
+      <button class="filter-btn active" data-filter="status" data-value="all">Всі</button>
+      <button class="filter-btn" data-filter="status" data-value="available">У наявності</button>
+      <button class="filter-btn" data-filter="status" data-value="transit">В дорозі</button>
+    </div>
+  </div>
+</div>
 <div class="share-bar">
   <button class="share-btn" id="shareBtn" onclick="copyFilterLink()">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -141,7 +156,7 @@
 </div>
 <div class="no-results" id="noResults">😕 Нічого не знайдено. Спробуй інші фільтри.</div>
 <div class="grid" id="carGrid">
-<a href="zeekr-7x.html" class="car-card" data-mileage="6100" data-type="EV" data-brand="ZEEKR" data-price="40299">
+<a href="zeekr-7x.html" class="car-card" data-mileage="6100" data-type="EV" data-brand="ZEEKR" data-price="40299" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1A0YkYmPSNRO2wIXmDkSm4zliBiKQN3rh')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -156,7 +171,7 @@
       </div>
     </div>
   </a>
-<a href="lixiang-l6.html" class="car-card" data-mileage="8600" data-type="EREV" data-brand="Lixiang" data-price="46777">
+<a href="lixiang-l6.html" class="car-card" data-mileage="8600" data-type="EREV" data-brand="Lixiang" data-price="46777" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1Lb_qlQe905wO2p6diwj4zzCRW8s0cZgV')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EREV</div>
@@ -171,13 +186,13 @@
       </div>
     </div>
   </a>
-<a href="byd-leopard5.html" class="car-card" data-mileage="16700" data-type="PHEV" data-brand="BYD" data-price="48699">
+<a href="byd-leopard5.html" class="car-card" data-mileage="16700" data-type="PHEV" data-brand="Leopard" data-price="48699" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1EGhI49XeKtzEb6hIUr-kU-aFCDfUGetU')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">PHEV</div>
     </div>
     <div class="car-info">
-      <div class="car-name">BYD Leopard 5 Ultra</div>
+      <div class="car-name">Leopard 5 Ultra</div>
       <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Пробіг ≈16 700 км</div>
       <div class="car-arrival">📅 Очікувана дата заходу в порт 15.07.2026</div>
       <div class="car-footer">
@@ -187,7 +202,7 @@
     </div>
   </a>
 
-  <a href="byd-sealion07.html" class="car-card" data-mileage="396" data-type="PHEV" data-brand="BYD" data-price="33399">
+  <a href="byd-sealion07.html" class="car-card" data-mileage="396" data-type="PHEV" data-brand="BYD" data-price="33399" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1DGidqU_11IEzjLLINKhbt0Zb5sC66GPa')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">PHEV</div>
@@ -202,7 +217,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion07-610.html" class="car-card" data-mileage="5800" data-type="EV" data-brand="BYD" data-price="33999">
+  <a href="byd-sealion07-610.html" class="car-card" data-mileage="5800" data-type="EV" data-brand="BYD" data-price="33999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1FZMFhMJqzKLDba0_8TGD3sCtWRIRuD1k')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -217,7 +232,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion06.html" class="car-card" data-mileage="3200" data-type="EV" data-brand="BYD" data-price="27999">
+  <a href="byd-sealion06.html" class="car-card" data-mileage="3200" data-type="EV" data-brand="BYD" data-price="27999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/16kD5yTewxFiXh8vxRax8WMxb2SWVY4zA')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -232,7 +247,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion05.html" class="car-card" data-mileage="8900" data-type="EV" data-brand="BYD" data-price="23199">
+  <a href="byd-sealion05.html" class="car-card" data-mileage="8900" data-type="EV" data-brand="BYD" data-price="23199" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1rbLnaJAn4g7DBGcw9m6lvCaT6jbrhYBh')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -247,7 +262,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion05-top.html" class="car-card" data-mileage="7100" data-type="EV" data-brand="BYD" data-price="24199">
+  <a href="byd-sealion05-top.html" class="car-card" data-mileage="7100" data-type="EV" data-brand="BYD" data-price="24199" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1-NCENUuHZ3oP6V-1ygt6m0Xyt0OEaLJw')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -262,7 +277,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-yuan-plus.html" class="car-card" data-mileage="900" data-type="EV" data-brand="BYD" data-price="24499">
+  <a href="byd-yuan-plus.html" class="car-card" data-mileage="900" data-type="EV" data-brand="BYD" data-price="24499" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1VOG2q8pHYoHoBOdW4VTfL4OZE14UIWNk')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -278,13 +293,13 @@
     </div>
   </a>
   
-  <a href="byd-leopard5-2.html" class="car-card" data-mileage="8400" data-type="PHEV" data-brand="BYD" data-price="49499">
+  <a href="byd-leopard5-2.html" class="car-card" data-mileage="8400" data-type="PHEV" data-brand="Leopard" data-price="49499" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1QmD122gc0NJ5cLfu3YZMBYyYMtymsOmX')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">PHEV</div>
     </div>
     <div class="car-info">
-      <div class="car-name">BYD Leopard 5 Ultra</div>
+      <div class="car-name">Leopard 5 Ultra</div>
       <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Пробіг ≈8 400 км</div>
       <div class="car-arrival">📅 Очікувана дата заходу в порт 15.07.2026</div>
       <div class="car-footer">
@@ -294,7 +309,7 @@
     </div>
   </a>
   
-  <a href="zeekr-7x-2.html" class="car-card" data-mileage="10100" data-type="EV" data-brand="ZEEKR" data-price="39199">
+  <a href="zeekr-7x-2.html" class="car-card" data-mileage="10100" data-type="EV" data-brand="ZEEKR" data-price="39199" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/13Hf5M7QX2FgpEUdLK5I9zXQNGpf4-g1z')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -309,7 +324,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-3.html" class="car-card" data-mileage="15400" data-type="EV" data-brand="ZEEKR" data-price="39000">
+  <a href="zeekr-7x-3.html" class="car-card" data-mileage="15400" data-type="EV" data-brand="ZEEKR" data-price="39000" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1NMmleRCgMiV72NZrmkn3XVJhwjEVs1cV')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -324,7 +339,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-4.html" class="car-card" data-mileage="15200" data-type="EV" data-brand="ZEEKR" data-price="38999">
+  <a href="zeekr-7x-4.html" class="car-card" data-mileage="15200" data-type="EV" data-brand="ZEEKR" data-price="38999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/18_Z751HYNb6pVc-Zv_iqGSYZiGq8Kv1a')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -339,7 +354,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-5.html" class="car-card" data-mileage="15200" data-type="EV" data-brand="ZEEKR" data-price="38999">
+  <a href="zeekr-7x-5.html" class="car-card" data-mileage="15200" data-type="EV" data-brand="ZEEKR" data-price="38999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1TPTJNbt3oI7U3bo7dG2OQTFGSNVwTD6P')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -354,7 +369,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-6.html" class="car-card" data-mileage="16500" data-type="EV" data-brand="ZEEKR" data-price="39199">
+  <a href="zeekr-7x-6.html" class="car-card" data-mileage="16500" data-type="EV" data-brand="ZEEKR" data-price="39199" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1DvpQRo9_kMMYtU7eVZx2b3lnRRW00Rkc')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -369,7 +384,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-7.html" class="car-card" data-mileage="6200" data-type="EV" data-brand="ZEEKR" data-price="38899">
+  <a href="zeekr-7x-7.html" class="car-card" data-mileage="6200" data-type="EV" data-brand="ZEEKR" data-price="38899" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1r6EspBoqmWbhO0cia0EJGOSblBjF44wf')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -384,7 +399,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-8.html" class="car-card" data-mileage="13700" data-type="EV" data-brand="ZEEKR" data-price="39099">
+  <a href="zeekr-7x-8.html" class="car-card" data-mileage="13700" data-type="EV" data-brand="ZEEKR" data-price="39099" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1rKs3sBus9AhHnSpNL47HpnH87Xrdxxz1')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -399,7 +414,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-9.html" class="car-card" data-mileage="12200" data-type="EV" data-brand="ZEEKR" data-price="39099">
+  <a href="zeekr-7x-9.html" class="car-card" data-mileage="12200" data-type="EV" data-brand="ZEEKR" data-price="39099" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1wjXj_5yHDl5RLMdntMkSSHuWKD4Y2FrF')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -414,7 +429,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-7x-10.html" class="car-card" data-mileage="16100" data-type="EV" data-brand="ZEEKR" data-price="38799">
+  <a href="zeekr-7x-10.html" class="car-card" data-mileage="16100" data-type="EV" data-brand="ZEEKR" data-price="38799" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1svsfjqIK4xd1TXoo2za_vOvXYaE9PFwd')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -430,7 +445,7 @@
     </div>
   </a>
   
-  <a href="lixiang-l7.html" class="car-card" data-mileage="9300" data-type="EREV" data-brand="Lixiang" data-price="59499">
+  <a href="lixiang-l7.html" class="car-card" data-mileage="9300" data-type="EREV" data-brand="Lixiang" data-price="59499" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1ak4gBPJ2Vj48fKUtHj4QkW88kvIqur2W')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EREV</div>
@@ -445,7 +460,7 @@
       </div>
     </div>
   </a>
-  <a href="mercedes-eqe.html" class="car-card" data-mileage="35000" data-type="EV" data-brand="Mercedes" data-price="49999">
+  <a href="mercedes-eqe.html" class="car-card" data-mileage="35000" data-type="EV" data-brand="Mercedes" data-price="49999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1x3WtAX80C7ZsebEdxaVA68pDlkVyePj2')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -461,7 +476,7 @@
     </div>
   </a>
 
-  <a href="byd-sealion05-top-2.html" class="car-card" data-mileage="9600" data-type="EV" data-brand="BYD" data-price="24999">
+  <a href="byd-sealion05-top-2.html" class="car-card" data-mileage="9600" data-type="EV" data-brand="BYD" data-price="24999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1g4rmu8LoEplgu1sLePyxf0RgCnnkgX5Y')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -476,7 +491,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion07-610-2.html" class="car-card" data-mileage="6700" data-type="EV" data-brand="BYD" data-price="34099">
+  <a href="byd-sealion07-610-2.html" class="car-card" data-mileage="6700" data-type="EV" data-brand="BYD" data-price="34099" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1vlSQ1ckqgOm4PX7N8JskQdtWCulD1roy')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -491,7 +506,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-song-l.html" class="car-card" data-mileage="3400" data-type="PHEV" data-brand="BYD" data-price="27599">
+  <a href="byd-song-l.html" class="car-card" data-mileage="3400" data-type="PHEV" data-brand="BYD" data-price="27599" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1egisFYlwiFChu1GfrXRklndNIzY2Blfb')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">PHEV</div>
@@ -507,7 +522,7 @@
     </div>
   </a>
 
-  <a href="tai-7.html" class="car-card" data-mileage="0" data-type="PHEV" data-brand="TAI" data-price="47499">
+  <a href="tai-7.html" class="car-card" data-mileage="0" data-type="PHEV" data-brand="Leopard" data-price="47499" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1o7VukyeL1Rek22XJH8sbqkwanK2UXQMI')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">PHEV</div>
@@ -522,7 +537,7 @@
       </div>
     </div>
   </a>
-  <a href="tai-7-2.html" class="car-card" data-mileage="0" data-type="PHEV" data-brand="TAI" data-price="47499">
+  <a href="tai-7-2.html" class="car-card" data-mileage="0" data-type="PHEV" data-brand="Leopard" data-price="47499" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">PHEV</div>
@@ -538,7 +553,7 @@
     </div>
   </a>
 
-  <a href="mazda-ez60.html" class="car-card" data-mileage="0" data-type="EREV" data-brand="Mazda" data-price="33899">
+  <a href="mazda-ez60.html" class="car-card" data-mileage="0" data-type="EREV" data-brand="Mazda" data-price="33899" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/19ZVzWQcmk90NENuIaWuFdWPZd6p0G2QO')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EREV</div>
@@ -554,7 +569,7 @@
     </div>
   </a>
 
-  <a href="byd-yuan-up.html" class="car-card" data-mileage="9400" data-type="EV" data-brand="BYD" data-price="18999">
+  <a href="byd-yuan-up.html" class="car-card" data-mileage="9400" data-type="EV" data-brand="BYD" data-price="18999" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1bch8vxHmZ-IJrgCG-37ROcZxXLUU-skn')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
@@ -570,7 +585,7 @@
     </div>
   </a>
 
-  <a href="zeekr-7x-11.html" class="car-card" data-mileage="21000" data-type="EV" data-brand="ZEEKR" data-price="40499">
+  <a href="zeekr-7x-11.html" class="car-card" data-mileage="21000" data-type="EV" data-brand="ZEEKR" data-price="40499" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1rIOsskwQwl-3Q1MW6q5QUH1BcUYUrb9u')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
@@ -586,7 +601,7 @@
     </div>
   </a>
 
-  <a href="byd-yuan-plus-2.html" class="car-card" data-mileage="4000" data-type="EV" data-brand="BYD" data-price="24199">
+  <a href="byd-yuan-plus-2.html" class="car-card" data-mileage="4000" data-type="EV" data-brand="BYD" data-price="24199" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1KMAgWGfVzChoreOQxRxDmCEZp0kn4HSy')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -602,7 +617,7 @@
     </div>
   </a>
 
-  <a href="byd-tang.html" class="car-card" data-mileage="3000" data-type="PHEV" data-brand="BYD" data-price="37999">
+  <a href="byd-tang.html" class="car-card" data-mileage="3000" data-type="PHEV" data-brand="BYD" data-price="37999" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1Tfi0coliagy__qy2k6vBUGo3511c32PG')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">PHEV</div>
@@ -618,7 +633,7 @@
     </div>
   </a>
 
-  <a href="honda-ens1.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Honda" data-price="22499">
+  <a href="honda-ens1.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Honda" data-price="22499" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1fpMYQxml_j-JikGTXC6t44YTIfDxZMlk')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
@@ -634,8 +649,8 @@
     </div>
   </a>
 
-  <a href="xiaomi-yu7.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Xiaomi" data-price="58999">
-    <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1QGxNMlMg_9pGCcXIRFoT2kuTcOmtpTHR')">
+  <a href="xiaomi-yu7.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Xiaomi" data-price="58999" data-status="available">
+    <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1S1UvoXdYTsR6V1pTjzzMPm36bVQ4B71O')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
     </div>
@@ -649,7 +664,7 @@
       </div>
     </div>
   </a>
-  <a href="honda-ens1-2.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Honda" data-price="22999">
+  <a href="honda-ens1-2.html" class="car-card" data-mileage="0" data-type="EV" data-brand="Honda" data-price="22999" data-status="transit">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1z9V2W_fRSc9Bh1XZc3gcaiKkge4e-6UX')">
       <div class="car-badge badge-blue">Авто в дорозі</div>
       <div class="car-type">EV</div>
@@ -664,7 +679,7 @@
       </div>
     </div>
   </a>
-  <a href="zeekr-001.html" class="car-card" data-mileage="0" data-type="EV" data-brand="ZEEKR" data-price="47999">
+  <a href="zeekr-001.html" class="car-card" data-mileage="0" data-type="EV" data-brand="ZEEKR" data-price="47999" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/1uhqSmBuXehq7NAyukvY85LCTq0b2QdyR')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
@@ -679,7 +694,7 @@
       </div>
     </div>
   </a>
-  <a href="byd-sealion06-pro.html" class="car-card" data-mileage="0" data-type="EV" data-brand="BYD" data-price="29999">
+  <a href="byd-sealion06-pro.html" class="car-card" data-mileage="0" data-type="EV" data-brand="BYD" data-price="29999" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/13te-LhVv4KsHGk95WtNaNQPyohUOh65A')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
@@ -694,13 +709,13 @@
       </div>
     </div>
   </a>
-  <a href="denza-n7.html" class="car-card" data-mileage="8500" data-type="EV" data-brand="DENZA" data-price="38999">
+  <a href="denza-n7.html" class="car-card" data-mileage="8500" data-type="EV" data-brand="Denza" data-price="38999" data-status="available">
     <div class="car-photo" style="background-image:url('https://lh3.googleusercontent.com/d/19_mVulIxEOLykPQ63_nmstkQDlGs0FMi')">
       <div class="car-badge badge-green">У наявності</div>
       <div class="car-type">EV</div>
     </div>
     <div class="car-info">
-      <div class="car-name">DENZA N7 630km 4WD</div>
+      <div class="car-name">Denza N7 630km 4WD</div>
       <div class="car-meta">2024 р.в. &nbsp;·&nbsp; Пробіг ≈8 500 км</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
@@ -723,12 +738,13 @@
 </div>
 
 <script>
-const filters = {type: 'all', brand: 'all', price: 'all'};
+const filters = {type: 'all', brand: 'all', price: 'all', status: 'all'};
 
 // Читаємо URL параметри при завантаженні
 function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('brand')) filters.brand = params.get('brand');
+  if (params.get('status')) filters.status = params.get('status');
   if (params.get('type'))  filters.type  = params.get('type');
   if (params.get('price')) filters.price = params.get('price');
   if (params.get('sort'))  sortOrder = params.get('sort');
@@ -753,7 +769,7 @@ if (sortOrder !== 'default') {
   document.getElementById('sortSelect').value = sortOrder;
 }
 // Оновити кнопки відповідно до фільтрів
-['type','brand','price'].forEach(filterType => {
+['type','brand','price','status'].forEach(filterType => {
   if (filters[filterType] !== 'all') {
     document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
     const btn = document.querySelector(`.filter-btn[data-filter="${filterType}"][data-value="${filters[filterType]}"]`);
@@ -783,9 +799,10 @@ function applyFilters() {
     const type    = card.dataset.type;
     const brand   = card.dataset.brand;
     const price   = parseInt(card.dataset.price);
-    const typeOk  = filters.type  === 'all' || type  === filters.type;
-    const brandOk = filters.brand === 'all' || brand === filters.brand;
-    const priceOk = priceMatch(price, filters.price);
+    const typeOk   = filters.type   === 'all' || type  === filters.type;
+    const brandOk  = filters.brand  === 'all' || brand === filters.brand;
+    const priceOk  = priceMatch(price, filters.price);
+    const statusOk = filters.status === 'all' || card.dataset.status === filters.status;
     card._visible = typeOk && brandOk && priceOk;
     if (card._visible) visible++;
   });
@@ -818,6 +835,7 @@ function copyFilterLink() {
   if (filters.type  !== 'all') params.set('type',  filters.type);
   if (filters.price !== 'all') params.set('price',  filters.price);
   if (sortOrder !== 'default') params.set('sort', sortOrder);
+  if (filters.status !== 'all') params.set('status', filters.status);
   
   const base = window.location.origin + window.location.pathname;
   const link = params.toString() ? base + '?' + params.toString() : base;
