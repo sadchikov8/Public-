@@ -794,16 +794,34 @@ function applyFilters() {
   const cards = Array.from(grid.querySelectorAll('.car-card'));
   let visible = 0;
 
-  // Фільтрація
   cards.forEach(card => {
-    const type    = card.dataset.type;
-    const brand   = card.dataset.brand;
-    const price   = parseInt(card.dataset.price);
+    const type   = card.dataset.type;
+    const brand  = card.dataset.brand;
+    const price  = parseInt(card.dataset.price);
+    const status = card.dataset.status;
+
     const typeOk   = filters.type   === 'all' || type  === filters.type;
-    const brandOk  = filters.brand  === 'all' || brand === filters.brand;
     const priceOk  = priceMatch(price, filters.price);
-    const statusOk = filters.status === 'all' || card.dataset.status === filters.status;
-    card._visible = typeOk && brandOk && priceOk;
+    const statusOk = filters.status === 'all' || status === filters.status;
+
+    // Логіка брендів:
+    // BYD → BYD + Leopard + Denza
+    // Leopard → Leopard (Leopard 5 + TAI 7)
+    // Denza → Denza
+    // Zeekr → ZEEKR
+    // інші → точне співпадіння
+    let brandOk = false;
+    if (filters.brand === 'all') {
+      brandOk = true;
+    } else if (filters.brand === 'BYD') {
+      brandOk = brand === 'BYD' || brand === 'Leopard' || brand === 'Denza';
+    } else if (filters.brand === 'ZEEKR') {
+      brandOk = brand === 'ZEEKR';
+    } else {
+      brandOk = brand === filters.brand;
+    }
+
+    card._visible = typeOk && brandOk && priceOk && statusOk;
     if (card._visible) visible++;
   });
 
@@ -820,7 +838,6 @@ function applyFilters() {
     return 0;
   });
 
-  // Перебудувати grid
   sorted.forEach(card => {
     card.style.display = card._visible ? '' : 'none';
     grid.appendChild(card);
