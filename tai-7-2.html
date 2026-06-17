@@ -135,6 +135,7 @@ document.addEventListener('dragstart',e=>e.preventDefault());
     <tr><td>Тип</td><td>PHEV (Plug-in Hybrid)</td></tr>
     <tr><td>Батарея</td><td class="highlight">35.6 кВт·год LFP</td></tr>
     <tr><td>Запас ходу EV</td><td class="highlight">190 км (CLTC) · 130 км (WLTC)</td></tr>
+    <tr><td>Повний запас ходу</td><td class="highlight">1 200 км (CLTC)</td></tr>
     <tr><td>Привід</td><td>4WD (Dual Motor)</td></tr>
     <tr><td>Потужність системи</td><td class="highlight">490 к.с. (360 кВт)</td></tr>
     <tr><td>Крутний момент</td><td>620 Нм</td></tr>
@@ -147,7 +148,7 @@ document.addEventListener('dragstart',e=>e.preventDefault());
   <div class="section-title">Особливості</div>
   <div class="features-grid">
     <div class="feature-item">✦ Підігрів / масаж / вентиляція передніх сидінь</div>
-    <div class="feature-item">✦ Підігрів / масаж / вентиляція задніх сидінь</div>
+    <div class="feature-item">✦ Підігрів / вентиляція задніх сидінь</div>
     <div class="feature-item">✦ Підігрів керма</div>
     <div class="feature-item">✦ Проекція на лобове скло (HUD)</div>
     <div class="feature-item">✦ Панорамний дах з люком</div>
@@ -199,16 +200,16 @@ document.addEventListener('dragstart',e=>e.preventDefault());
 
 <script>
 const photos = [
-  {urls:["https://lh3.googleusercontent.com/d/12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe","https://drive.google.com/thumbnail?id=12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1KQPOqbIHrBLFbonVL7FZfsL0OnEASYpF","https://drive.google.com/thumbnail?id=1KQPOqbIHrBLFbonVL7FZfsL0OnEASYpF&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1Kb_EsnSpYjcz5Y6C-q-DOmdtTb7NNX-Y","https://drive.google.com/thumbnail?id=1Kb_EsnSpYjcz5Y6C-q-DOmdtTb7NNX-Y&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/12wLvEBYitxlOHP8vnQOgmluZDKa4Wf1r","https://drive.google.com/thumbnail?id=12wLvEBYitxlOHP8vnQOgmluZDKa4Wf1r&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1qj5JCYdRdRCTqcG89jKpdhzH4ciwk7oZ","https://drive.google.com/thumbnail?id=1qj5JCYdRdRCTqcG89jKpdhzH4ciwk7oZ&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1MyPUwvdBYZtIw_oGAIqX2zo-lW_YwMR_","https://drive.google.com/thumbnail?id=1MyPUwvdBYZtIw_oGAIqX2zo-lW_YwMR_&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1gQsCdj4H0bfjIC80KDJhaAgB7VG0QBmT","https://drive.google.com/thumbnail?id=1gQsCdj4H0bfjIC80KDJhaAgB7VG0QBmT&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1CE_HtIPqFbj_ufHFz5W_2stWawCt1a7j","https://drive.google.com/thumbnail?id=1CE_HtIPqFbj_ufHFz5W_2stWawCt1a7j&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1pCjuLTTr_alsQe46PWf88APFB3On58gz","https://drive.google.com/thumbnail?id=1pCjuLTTr_alsQe46PWf88APFB3On58gz&sz=w1280"]},
-  {urls:["https://lh3.googleusercontent.com/d/1pPm3R6-4if6ZkiCoRbrF30nvEUIJKO29","https://drive.google.com/thumbnail?id=1pPm3R6-4if6ZkiCoRbrF30nvEUIJKO29&sz=w1280"]}
+  {urls:["https://lh3.googleusercontent.com/d/12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe","https://drive.google.com/thumbnail?id=12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe&sz=w1280","https://drive.google.com/uc?export=view&id=12tXQnsFLwvaEpO1CmdooxS1c6Z7ThLNe"]},
+  {urls:["https://lh3.googleusercontent.com/d/1KQPOqbIHrBLFbonVL7FZfsL0OnEASYpF","https://drive.google.com/thumbnail?id=1KQPOqbIHrBLFbonVL7FZfsL0OnEASYpF&sz=w1280","https://drive.google.com/uc?export=view&id=1KQPOqbIHrBLFbonVL7FZfsL0OnEASYpF"]},
+  {urls:["https://lh3.googleusercontent.com/d/1Kb_EsnSpYjcz5Y6C-q-DOmdtTb7NNX-Y","https://drive.google.com/thumbnail?id=1Kb_EsnSpYjcz5Y6C-q-DOmdtTb7NNX-Y&sz=w1280","https://drive.google.com/uc?export=view&id=1Kb_EsnSpYjcz5Y6C-q-DOmdtTb7NNX-Y"]},
+  {urls:["https://lh3.googleusercontent.com/d/12wLvEBYitxlOHP8vnQOgmluZDKa4Wf1r","https://drive.google.com/thumbnail?id=12wLvEBYitxlOHP8vnQOgmluZDKa4Wf1r&sz=w1280","https://drive.google.com/uc?export=view&id=12wLvEBYitxlOHP8vnQOgmluZDKa4Wf1r"]},
+  {urls:["https://lh3.googleusercontent.com/d/1qj5JCYdRdRCTqcG89jKpdhzH4ciwk7oZ","https://drive.google.com/thumbnail?id=1qj5JCYdRdRCTqcG89jKpdhzH4ciwk7oZ&sz=w1280","https://drive.google.com/uc?export=view&id=1qj5JCYdRdRCTqcG89jKpdhzH4ciwk7oZ"]},
+  {urls:["https://lh3.googleusercontent.com/d/1MyPUwvdBYZtIw_oGAIqX2zo-lW_YwMR_","https://drive.google.com/thumbnail?id=1MyPUwvdBYZtIw_oGAIqX2zo-lW_YwMR_&sz=w1280","https://drive.google.com/uc?export=view&id=1MyPUwvdBYZtIw_oGAIqX2zo-lW_YwMR_"]},
+  {urls:["https://lh3.googleusercontent.com/d/1gQsCdj4H0bfjIC80KDJhaAgB7VG0QBmT","https://drive.google.com/thumbnail?id=1gQsCdj4H0bfjIC80KDJhaAgB7VG0QBmT&sz=w1280","https://drive.google.com/uc?export=view&id=1gQsCdj4H0bfjIC80KDJhaAgB7VG0QBmT"]},
+  {urls:["https://lh3.googleusercontent.com/d/1CE_HtIPqFbj_ufHFz5W_2stWawCt1a7j","https://drive.google.com/thumbnail?id=1CE_HtIPqFbj_ufHFz5W_2stWawCt1a7j&sz=w1280","https://drive.google.com/uc?export=view&id=1CE_HtIPqFbj_ufHFz5W_2stWawCt1a7j"]},
+  {urls:["https://lh3.googleusercontent.com/d/1pCjuLTTr_alsQe46PWf88APFB3On58gz","https://drive.google.com/thumbnail?id=1pCjuLTTr_alsQe46PWf88APFB3On58gz&sz=w1280","https://drive.google.com/uc?export=view&id=1pCjuLTTr_alsQe46PWf88APFB3On58gz"]},
+  {urls:["https://lh3.googleusercontent.com/d/1pPm3R6-4if6ZkiCoRbrF30nvEUIJKO29","https://drive.google.com/thumbnail?id=1pPm3R6-4if6ZkiCoRbrF30nvEUIJKO29&sz=w1280","https://drive.google.com/uc?export=view&id=1pPm3R6-4if6ZkiCoRbrF30nvEUIJKO29"]}
 ];
 let current=0;
 const mainPhoto=document.getElementById('mainPhoto');
