@@ -26,7 +26,7 @@
   .price-usd{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,6vw,50px);color:var(--white);margin-top:16px;}
   .price-usd span{color:var(--blue-light);}
   .gallery-wrap{position:relative;margin-top:24px;margin-left:-24px;margin-right:-24px;}
-  .gallery-main{width:100%;height:clamp(240px,55vw,720px);object-fit:contain;display:block;transition:opacity .3s;background:var(--dark);pointer-events:none;}
+  .gallery-main{cursor:zoom-in;width:100%;height:clamp(240px,55vw,720px);object-fit:contain;display:block;transition:opacity .3s;background:var(--dark);pointer-events:none;}
   .gallery-main.loading{opacity:.3;}
   .gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:60px;z-index:10;}
   .watermark{position:absolute;inset:0;z-index:15;pointer-events:none;display:flex;align-items:center;justify-content:center;}
@@ -106,7 +106,7 @@
     </div>
     <h1>BYD SEA LION 06 EV<br><span>605 PLUS</span></h1>
     <div class="hero-sub">2025 р.в. &nbsp;·&nbsp; EV &nbsp;·&nbsp; Пробіг ≈3 200 км</div>
-    <div class="price-usd">екв. <span>$</span>28 000</div>
+    <div class="price-usd">екв. <span>$</span>27 999</div>
   </div>
   <div class="gallery-wrap">
     <img id="mainPhoto" class="gallery-main" alt="BYD Sea Lion 06 EV 605 Plus">
@@ -118,9 +118,6 @@
     <button class="nav-btn nav-next" onclick="changePhoto(1)">&#8250;</button>
     <div class="thumbs" id="thumbs"></div>
   </div>
-</div>
-<div style="text-align:center;padding:10px 0 0;background:var(--dark);">
-  <button type="button" id="openLbBtn" style="background:rgba(45,93,184,0.2);border:1px solid rgba(45,93,184,0.4);color:#4a7fd4;font-size:13px;font-weight:700;padding:8px 20px;border-radius:20px;cursor:pointer;font-family:'Nunito',sans-serif;-webkit-tap-highlight-color:transparent;">🔍 Переглянути фото на весь екран</button>
 </div>
 
 <div class="section">
@@ -166,7 +163,7 @@
 </div>
 
 <div class="price-block">
-  <div class="price-row"><div class="price-tag">Вартість</div><div class="price-amount">екв. $28 000</div></div>
+  <div class="price-row"><div class="price-tag">Вартість</div><div class="price-amount">екв. $27 999</div></div>
   <div class="divider"></div>
   <div class="payment-note">📋 Оплата на рахунок ТОВ<br>💳 Можливість купівлі в кредит та розтермінування від 10%</div>
 </div>
@@ -237,9 +234,14 @@ function setPhoto(idx){
 function changePhoto(dir){setPhoto(current+dir);}
 setPhoto(0);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')changePhoto(-1);if(e.key==='ArrowRight')changePhoto(1);});
-let tx=0;
-function handleTouchStart(e){tx=e.touches[0].clientX;}
-function handleTouchEnd(e){const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)changePhoto(dx<0?1:-1);}
+let tx=0,ty=0;
+function handleTouchStart(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;}
+function handleTouchEnd(e){
+  const dx=e.changedTouches[0].clientX-tx;
+  const dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>40){changePhoto(dx<0?1:-1);}
+  else if(Math.abs(dx)<10&&Math.abs(dy)<10){openLb(current);}
+}
 
 const videoSlides=document.getElementById('videoSlides');
 const dotsEl=document.getElementById('videoDots');

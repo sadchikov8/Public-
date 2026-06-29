@@ -104,7 +104,7 @@
     </div>
     <h1>BYD YUAN PLUS<br><span>510 PREMIUM</span></h1>
     <div class="hero-sub">2025 р.в. &nbsp;·&nbsp; EV &nbsp;·&nbsp; Пробіг ≈900 км</div>
-    <div class="price-usd">екв. <span>$</span>24 500</div>
+    <div class="price-usd">екв. <span>$</span>24 499</div>
   </div>
   <div class="gallery-wrap">
     <img id="mainPhoto" class="gallery-main" alt="BYD Yuan Plus 510 Premium">
@@ -150,7 +150,7 @@
   </div>
 </div>
 <div class="price-block">
-  <div class="price-row"><div class="price-tag">Вартість</div><div class="price-amount">екв. $24 500</div></div>
+  <div class="price-row"><div class="price-tag">Вартість</div><div class="price-amount">екв. $24 499</div></div>
   <div class="divider"></div>
   <div class="payment-note">📋 Оплата на рахунок ТОВ<br>💳 Можливість купівлі в кредит та розтермінування від 10%</div>
 </div>
@@ -208,9 +208,14 @@ function setPhoto(idx){
 function changePhoto(dir){setPhoto(current+dir);}
 setPhoto(0);
 document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')changePhoto(-1);if(e.key==='ArrowRight')changePhoto(1);});
-let tx=0;
-function handleTouchStart(e){tx=e.touches[0].clientX;}
-function handleTouchEnd(e){const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)changePhoto(dx<0?1:-1);}
+let tx=0,ty=0;
+function handleTouchStart(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;}
+function handleTouchEnd(e){
+  const dx=e.changedTouches[0].clientX-tx;
+  const dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>40){changePhoto(dx<0?1:-1);}
+  else if(Math.abs(dx)<10&&Math.abs(dy)<10){openLb(current);}
+}
 const videoSlides=document.getElementById('videoSlides');
 const dotsEl=document.getElementById('videoDots');
 const totalVideos=2;
