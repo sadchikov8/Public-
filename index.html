@@ -775,6 +775,7 @@
 </div>
 
 <script>
+let sortOrder = 'default';
 const filters = {type: 'all', brand: 'all', price: 'all', status: 'all', condition: 'all'};
 
 // Читаємо URL параметри при завантаженні
@@ -786,7 +787,6 @@ function readUrlParams() {
   if (params.get('price')) filters.price = params.get('price');
   if (params.get('sort'))  sortOrder = params.get('sort');
 }
-let sortOrder = 'default';
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
