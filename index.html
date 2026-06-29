@@ -566,7 +566,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">TAI 7 190KM 4WD Ultra</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $47 999</div>
@@ -581,7 +581,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">TAI 7 190KM 4WD Ultra</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $47 469</div>
@@ -597,7 +597,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">Mazda EZ-60 200KM Pro</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $33 899</div>
@@ -677,7 +677,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">Honda e:NS1 68.8 kWh SubTop</div>
-      <div class="car-meta">2024 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2024 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $22 499</div>
@@ -708,7 +708,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">Honda e:NS1 68.8 kWh SubTop</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📅 Очікувана дата заходу в порт 18.06.2026</div>
       <div class="car-footer">
         <div class="car-price">екв. $22 999</div>
@@ -723,7 +723,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">ZEEKR 001 YOU 100 kWh 4WD</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $48 499</div>
@@ -738,7 +738,7 @@
     </div>
     <div class="car-info">
       <div class="car-name">BYD Sea Lion 06 EV 605 Pro</div>
-      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто авто</div>
+      <div class="car-meta">2025 р.в. &nbsp;·&nbsp; Нове авто</div>
       <div class="car-arrival">📍 Ужгород</div>
       <div class="car-footer">
         <div class="car-price">екв. $30 499</div>
@@ -836,7 +836,9 @@ function applyFilters() {
     const type   = card.dataset.type;
     const brand  = card.dataset.brand;
     const price  = parseInt(card.dataset.price);
-    const status = card.dataset.status;
+    const status    = card.dataset.status;
+    const condition = card.dataset.condition;
+    const model     = card.dataset.model;
 
     const typeOk   = filters.type   === 'all' || type  === filters.type;
     const priceOk  = priceMatch(price, filters.price);
