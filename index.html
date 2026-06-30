@@ -776,18 +776,21 @@
 
 <script>
 let sortOrder = 'default';
+let currentModel = 'all';
 const filters = {type: 'all', brand: 'all', price: 'all', status: 'all', condition: 'all'};
 
-// Читаємо URL параметри при завантаженні
+// Читання URL параметрів
 function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
-  if (params.get('brand')) filters.brand = params.get('brand');
-  if (params.get('status')) filters.status = params.get('status');
-  if (params.get('type'))  filters.type  = params.get('type');
-  if (params.get('price')) filters.price = params.get('price');
-  if (params.get('sort'))  sortOrder = params.get('sort');
+  if (params.get('brand'))     filters.brand     = params.get('brand');
+  if (params.get('type'))      filters.type      = params.get('type');
+  if (params.get('price'))     filters.price     = params.get('price');
+  if (params.get('status'))    filters.status    = params.get('status');
+  if (params.get('condition')) filters.condition = params.get('condition');
+  if (params.get('sort'))      sortOrder         = params.get('sort');
 }
 
+// Кнопки фільтрів
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const filterType = btn.dataset.filter;
@@ -800,22 +803,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// Застосувати фільтри з URL при завантаженні
-readUrlParams();
-// Оновити select сортування
-if (sortOrder !== 'default') {
-  document.getElementById('sortSelect').value = sortOrder;
-}
-// Оновити кнопки відповідно до фільтрів
-['type','brand','price','status'].forEach(filterType => {
-  if (filters[filterType] !== 'all') {
-    document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
-    const btn = document.querySelector(`.filter-btn[data-filter="${filterType}"][data-value="${filters[filterType]}"]`);
-    if (btn) btn.classList.add('active');
-  }
-});
-applyFilters();
-
+// Сортування
 document.getElementById('sortSelect').addEventListener('change', function() {
   sortOrder = this.value;
   applyFilters();
@@ -833,32 +821,24 @@ function applyFilters() {
   let visible = 0;
 
   cards.forEach(card => {
-    const type   = card.dataset.type;
-    const brand  = card.dataset.brand;
-    const price  = parseInt(card.dataset.price);
-    const status    = card.dataset.status;
-    const condition = card.dataset.condition;
-    const model     = card.dataset.model;
+    const type      = card.dataset.type      || '';
+    const brand     = card.dataset.brand     || '';
+    const price     = parseInt(card.dataset.price) || 0;
+    const status    = card.dataset.status    || '';
+    const condition = card.dataset.condition || '';
+    const model     = card.dataset.model     || '';
 
-    const typeOk   = filters.type   === 'all' || type  === filters.type;
-    const priceOk  = priceMatch(price, filters.price);
-    const statusOk    = filters.status === 'all' || status === filters.status;
+    const typeOk      = filters.type      === 'all' || type      === filters.type;
+    const priceOk     = priceMatch(price, filters.price);
+    const statusOk    = filters.status    === 'all' || status    === filters.status;
     const conditionOk = filters.condition === 'all' || condition === filters.condition;
-    const modelOk     = currentModel === 'all' || model === currentModel;
+    const modelOk     = currentModel      === 'all' || model     === currentModel;
 
-    // Логіка брендів:
-    // BYD → BYD + Leopard + Denza
-    // Leopard → Leopard (Leopard 5 + TAI 7)
-    // Denza → Denza
-    // Zeekr → ZEEKR
-    // інші → точне співпадіння
     let brandOk = false;
     if (filters.brand === 'all') {
       brandOk = true;
     } else if (filters.brand === 'BYD') {
       brandOk = brand === 'BYD' || brand === 'Leopard' || brand === 'Denza';
-    } else if (filters.brand === 'ZEEKR') {
-      brandOk = brand === 'ZEEKR';
     } else {
       brandOk = brand === filters.brand;
     }
@@ -869,10 +849,10 @@ function applyFilters() {
 
   // Сортування
   const sorted = [...cards].sort((a, b) => {
-    const pa = parseInt(a.dataset.price);
-    const pb = parseInt(b.dataset.price);
-    const ma = parseInt(a.dataset.mileage);
-    const mb = parseInt(b.dataset.mileage);
+    const pa = parseInt(a.dataset.price) || 0;
+    const pb = parseInt(b.dataset.price) || 0;
+    const ma = parseInt(a.dataset.mileage) || 0;
+    const mb = parseInt(b.dataset.mileage) || 0;
     if (sortOrder === 'price-asc')    return pa - pb;
     if (sortOrder === 'price-desc')   return pb - pa;
     if (sortOrder === 'mileage-asc')  return ma - mb;
@@ -888,17 +868,53 @@ function applyFilters() {
   document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
 }
 
+// Фільтр моделей
+const brandModels = {"BYD": ["Tang", "Yuan UP", "Sea Lion 07 DM-i", "Sea Lion 07 EV", "Sea Lion 06 EV", "Sea Lion 05 EV", "Song L DM-i", "Yuan Plus"], "Leopard": ["TAI 7", "Leopard 5"], "Denza": ["N7"], "ZEEKR": ["7X", "001"], "Lixiang": ["L6", "L7"], "Mercedes": ["EQE SUV"], "Honda": ["e:NS1"], "Mazda": ["EZ-60"], "Xiaomi": ["YU7"]};
+
+function updateModelFilter(brand) {
+  const bar = document.getElementById('modelFilterBar');
+  const row = document.getElementById('modelFilterRow');
+  currentModel = 'all';
+
+  if (brand === 'all' || !brandModels[brand] || brandModels[brand].length <= 1) {
+    bar.classList.remove('active');
+    return;
+  }
+
+  row.innerHTML = '<span class="model-filter-label">Модель:</span>';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'model-btn active';
+  allBtn.textContent = 'Всі';
+  allBtn.addEventListener('click', () => setModel('all'));
+  row.appendChild(allBtn);
+
+  brandModels[brand].forEach(model => {
+    const btn = document.createElement('button');
+    btn.className = 'model-btn';
+    btn.textContent = model;
+    btn.addEventListener('click', () => setModel(model));
+    row.appendChild(btn);
+  });
+
+  bar.classList.add('active');
+}
+
+function setModel(model) {
+  currentModel = model;
+  document.querySelectorAll('.model-btn').forEach(b => b.classList.toggle('active', b.textContent === (model === 'all' ? 'Всі' : model)));
+  applyFilters();
+}
+
+// Поділитися
 function copyFilterLink() {
   const params = new URLSearchParams();
-  if (filters.brand !== 'all') params.set('brand', filters.brand);
-  if (filters.type  !== 'all') params.set('type',  filters.type);
-  if (filters.price !== 'all') params.set('price',  filters.price);
-  if (sortOrder !== 'default') params.set('sort', sortOrder);
-  if (filters.status !== 'all') params.set('status', filters.status);
-  
-  const base = window.location.origin + window.location.pathname;
-  const link = params.toString() ? base + '?' + params.toString() : base;
-  
+  if (filters.brand !== 'all')     params.set('brand',     filters.brand);
+  if (filters.type  !== 'all')     params.set('type',      filters.type);
+  if (filters.price !== 'all')     params.set('price',     filters.price);
+  if (filters.status !== 'all')    params.set('status',    filters.status);
+  if (filters.condition !== 'all') params.set('condition', filters.condition);
+  if (sortOrder !== 'default')     params.set('sort',      sortOrder);
+  const link = window.location.origin + window.location.pathname + (params.toString() ? '?' + params.toString() : '');
   navigator.clipboard.writeText(link).then(() => {
     const btn = document.getElementById('shareBtn');
     btn.classList.add('copied');
@@ -910,54 +926,18 @@ function copyFilterLink() {
   });
 }
 
-// Фільтр по моделях
-const brandModels = {"BYD": {"Tang": ["byd-tang.html"], "Yuan UP": ["byd-yuan-up.html"], "Sea Lion 07 DM-i": ["byd-sealion07.html"], "Sea Lion 07 EV": ["byd-sealion07-610.html", "byd-sealion07-610-2.html"], "Sea Lion 06 EV": ["byd-sealion06.html", "byd-sealion06-pro.html"], "Sea Lion 05 EV": ["byd-sealion05.html", "byd-sealion05-top.html", "byd-sealion05-top-2.html"], "Song L DM-i": ["byd-song-l.html"], "Yuan Plus": ["byd-yuan-plus.html", "byd-yuan-plus-2.html"]}, "Leopard": {"TAI 7": ["tai-7.html", "tai-7-2.html"], "Leopard 5": ["byd-leopard5.html", "byd-leopard5-2.html"]}, "Denza": {"N7": ["denza-n7.html"]}, "ZEEKR": {"7X": ["zeekr-7x.html", "zeekr-7x-2.html", "zeekr-7x-3.html", "zeekr-7x-4.html", "zeekr-7x-5.html", "zeekr-7x-6.html", "zeekr-7x-7.html", "zeekr-7x-8.html", "zeekr-7x-9.html", "zeekr-7x-10.html", "zeekr-7x-11.html"], "001": ["zeekr-001.html"]}, "Lixiang": {"L6": ["lixiang-l6.html"], "L7": ["lixiang-l7.html"]}, "Mercedes": {"EQE SUV": ["mercedes-eqe.html"]}, "Honda": {"e:NS1": ["honda-ens1.html", "honda-ens1-2.html"]}, "Mazda": {"EZ-60": ["mazda-ez60.html"]}, "Xiaomi": {"YU7": ["xiaomi-yu7.html"]}};
-let currentModel = 'all';
-
-function updateModelFilter(brand) {
-  const bar = document.getElementById('modelFilterBar');
-  const row = document.getElementById('modelFilterRow');
-  
-  if (brand === 'all' || !brandModels[brand]) {
-    bar.classList.remove('active');
-    currentModel = 'all';
-    return;
+// Ініціалізація
+readUrlParams();
+if (sortOrder !== 'default') document.getElementById('sortSelect').value = sortOrder;
+['type','brand','price','status','condition'].forEach(filterType => {
+  if (filters[filterType] !== 'all') {
+    document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => b.classList.remove('active'));
+    const btn = document.querySelector(`.filter-btn[data-filter="${filterType}"][data-value="${filters[filterType]}"]`);
+    if (btn) btn.classList.add('active');
   }
-  
-  const models = Object.keys(brandModels[brand]);
-  if (models.length <= 1) {
-    bar.classList.remove('active');
-    currentModel = 'all';
-    return;
-  }
-  
-  // Побудувати кнопки моделей
-  row.innerHTML = '<span class="model-filter-label">Модель:</span>';
-  const allBtn = document.createElement('button');
-  allBtn.className = 'model-btn active';
-  allBtn.dataset.model = 'all';
-  allBtn.textContent = 'Всі';
-  allBtn.addEventListener('click', () => { setModel('all'); });
-  row.appendChild(allBtn);
-  
-  models.forEach(model => {
-    const btn = document.createElement('button');
-    btn.className = 'model-btn';
-    btn.dataset.model = model;
-    btn.textContent = model;
-    btn.addEventListener('click', () => { setModel(model); });
-    row.appendChild(btn);
-  });
-  
-  bar.classList.add('active');
-  currentModel = 'all';
-}
-
-function setModel(model) {
-  currentModel = model;
-  document.querySelectorAll('.model-btn').forEach(b => b.classList.toggle('active', b.dataset.model === model));
-  applyFilters();
-}
+});
+if (filters.brand !== 'all') updateModelFilter(filters.brand);
+applyFilters();
 </script>
 </body>
 </html>
