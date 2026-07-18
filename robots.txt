@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emused.pp.ua/sitemap.xml
+Sitemap: https://emuz.pp.ua/sitemap.xml
