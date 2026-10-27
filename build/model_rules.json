@@ -1,0 +1,47 @@
+{
+  "_help": "Правила зв'язку рядка з Базової таблиці з описом моделі (models.json). Перевіряються зверху вниз по тексту 'МАРКА МОДЕЛЬ КОМПЛЕКТАЦІЯ' у нижньому регістрі. Перше співпадіння виграє.",
+  "models": [
+    ["zeekr.*7x", "zeekr-7x"],
+    ["zeekr.*(001|oo1)", "zeekr-001"],
+    ["sea lion 05.*top", "byd-sealion05-top"],
+    ["sea lion 05", "byd-sealion05"],
+    ["sea lion 06\\s*ev.*pro", "byd-sealion06-pro"],
+    ["sea lion 06\\s*ev", "byd-sealion06"],
+    ["sea lion 07.*610", "byd-sealion07-610"],
+    ["sea lion 07.*dm", "byd-sealion07"],
+    ["song l dm", "byd-song-l"],
+    ["tang dm-i", "byd-tang"],
+    ["yuan plus", "byd-yuan-plus"],
+    ["yuan up", "byd-yuan-up"],
+    ["leopard 5", "byd-leopard5"],
+    ["tai 7", "tai-7"],
+    ["denza.*n7", "denza-n7"],
+    ["lixiang.*l\\s*6", "lixiang-l6"],
+    ["lixiang.*l\\s*7", "lixiang-l7"],
+    ["lynk.*09", "lynkco-09"],
+    ["mazda.*ez-?60", "mazda-ez60"],
+    ["mercedes.*eqe suv", "mercedes-eqe"],
+    ["honda.*e:ns1", "honda-ens1"],
+    ["xiaomi.*yu7", "xiaomi-yu7"]
+  ],
+  "types": [
+    ["lixiang|ez-?60|l6|l7|l8|erev|rex", "EREV"],
+    ["dm-i|dm |dm$|em-i|em-p|phev|tai 7|leopard|tiguan l", "PHEV"],
+    ["hybrid|hev|350h|450e", "HEV"],
+    [".", "EV"]
+  ],
+  "brand_names": {
+    "BYD": "BYD", "FCB": "BYD", "ZEEKR": "ZEEKR", "LIXIANG": "Li Auto", "LYNK&CO": "Lynk & Co",
+    "MERCEDES": "Mercedes-Benz", "VOLKSWAGEN": "Volkswagen", "GEELY": "Geely", "DEEPAL": "Deepal",
+    "MAZDA": "Mazda", "HONDA": "Honda", "TOYOTA": "Toyota", "AUDI": "Audi", "BMW": "BMW", "TESLA": "Tesla",
+    "VOLVO": "Volvo", "DENZA": "Denza", "XIAOMI": "Xiaomi", "NISSAN": "Nissan", "LEXUS": "Lexus",
+    "HYUNDAI": "Hyundai", "FORD": "Ford", "CHEVROLET": "Chevrolet", "LAND ROVER": "Land Rover",
+    "MINI": "MINI", "SKODA": "Škoda", "RENAULT": "Renault", "OPEL": "Opel", "CADILLAC": "Cadillac",
+    "JAGUAR": "Jaguar", "SMART": "smart", "SUBARU": "Subaru"
+  },
+  "cities": {
+    "UZHGOROD": "Ужгород", "LVIV": "Львів", "KIEV": "Київ", "KIEV CTO": "Київ", "ODESA": "Одеса",
+    "KHARKIV": "Харків", "DNIPRO": "Дніпро", "VINNICA": "Вінниця", "KROPIVNITSKII": "Кропивницький",
+    "ГОРОДОК": "Городок", "SEA": "В морі", "EUROPE": "Європа", "CHINA": "Китай", "TIR": "В дорозі", "USA": "США"
+  }
+}
