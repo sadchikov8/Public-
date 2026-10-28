@@ -18,6 +18,8 @@ SITE = "https://emuz.pp.ua"
 PHONE = "+380938789000"
 TG = "https://t.me/+380938789000"
 VIBER = "viber://chat?number=%2B380938789000"
+# Опубліковані вкладки таблиці «Сайт» (це публічні CSV, не секрет)
+CSV_URLS = {"used": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2x4zNBLq9G3tfawNYTE5Hfvz3ZNCrt5aPtO5tYxCnEsZnJqoCFWXYgFHjYsv7kResza9-zDJzE4pP/pub?single=true&output=csv&gid=1", "new": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2x4zNBLq9G3tfawNYTE5Hfvz3ZNCrt5aPtO5tYxCnEsZnJqoCFWXYgFHjYsv7kResza9-zDJzE4pP/pub?single=true&output=csv&gid=2"}
 
 def p(*a): return os.path.join(ROOT, *a)
 def esc(s): return html.escape(str(s if s is not None else ""), quote=True)
@@ -45,7 +47,7 @@ def fetch(url):
 def update_data():
     """Завантажує CSV з опублікованої таблиці. Не перезаписує дані, якщо відповідь підозріла."""
     for name, env, min_rows in (("used", "USED_CSV_URL", 5), ("new", "NEW_CSV_URL", 1)):
-        url = os.environ.get(env)
+        url = os.environ.get(env) or CSV_URLS[name]
         if not url:
             print(f"! {env} не задано — використовую data/{name}.csv як є"); continue
         try:

@@ -5,8 +5,8 @@ on:
     - cron: "17 * * * *"      # щогодини
   workflow_dispatch: {}       # кнопка «Run workflow» для ручного запуску
   push:
-    branches: [main]
-    paths: ["build/**", "assets/**"]
+    branches: [main, v2]
+    paths: ["build/**", "assets/**", ".github/workflows/**"]
 
 permissions:
   contents: write
